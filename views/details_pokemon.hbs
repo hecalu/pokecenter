@@ -1,0 +1,33 @@
+{{!-- Details --}}
+<div class="col-md-6 well">
+	
+	<div class="pokemon-cover">
+		<img class="center-block" alt="{{pokemon.name}}" src="{{image}}">
+	</div>
+
+	<div class="types">
+		{{#each pokemon.types}}
+			<div class="type type-{{name}}">{{name}}</div>
+		{{/each}}
+	</div>
+
+	<div class="description">
+		{{description}}
+	</div>
+</div>
+
+<div class="col-md-6">
+	<h2>Stats</h2>
+
+	<p>Height: {{pokemon.height}}"</p>
+	<p>Weight: {{pokemon.weight}}"</p>
+	<p>Catch rate: {{pokemon.catch_rate}}"</p>
+	<p>Male/Female ratio: {{pokemon.male_female_ratio}}</p>
+
+	<p>HP: {{pokemon.hp}}</p>
+	<p>Attack: {{pokemon.attack}}</p>
+	<p>Defense: {{pokemon.defense}}</p>
+	<p>SP Attack: {{pokemon.sp_atk}}</p>
+	<p>SP Defense: {{pokemon.sp_def}}</p>
+	<p>Speed: {{pokemon.speed}}</p>
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Pokecenter</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+      <link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="/stylesheets/style.css">
+
+      <!--[if lt IE 9]>
+          <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+          <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+      <![endif]-->
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+
+
+  </head>
+  <body>
+
+    <div class="container">
+      <header class="row">
+
+        {{!-- Nav --}}
+        <nav id="menu" class="nav nav-pills">
+          <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}><a href="/">Pokedex</a></li>
+          <li role="presentation" {{#if boxes_is_active}}class="active"{{/if}}><a href="/boxes/">Boxes</a></li>
+          <li role="presentation" {{#if details_is_active}}class="active"{{/if}}><a href="/details/">Details</a></li>
+        </nav>
+        
+        {{!-- Generated content --}}
+		    {{{body}}}
+
+      </header>
+
+      <hr>
+
+      <footer>
+        Made by ♥ for my ♥
+      </footer>
+    </div> <!-- /container -->
+    <script src="/javascripts/vendor/bootstrap.min.js"></script>
+    <script src="/javascripts/vendor/isotope.pkgd.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+  </body>
+</html>

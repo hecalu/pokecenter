@@ -1,0 +1,24 @@
+<h1>Pokedex national</h1>
+
+
+{{!-- Search --}}
+{{> search}}
+
+<hr>
+
+{{!-- Filters --}}
+{{> filters}}
+
+{{!-- Pokedex --}}
+<section class="pokedex col-md-9">
+	{{#each pokedex}}
+		<div data-id="{{id}}" data-toggle="tooltip" title="{{identifier}}" data-name="{{identifier}}" class="pokemon">
+      <div class="pokemon-image" style="background-position: {{backgroundPosition}}"></div>
+			<div class="pokemon-capture"></div>
+      <div class="pokemon-id">{{padId}}</div>
+		</div>
+	{{/each}}
+</section>
+
+{{!-- Javascript --}}
+<script src="/javascripts/index.js"></script>

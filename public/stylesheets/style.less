@@ -1,0 +1,194 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.input-group-btn select {
+  border-color: #ccc;
+	margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+#menu {
+	margin-bottom: 20px;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.pokedex {
+	min-height: 200px;
+
+	.tooltip {
+	    text-transform: capitalize;
+	}
+}
+.embed-pokedex {
+	height: 200px;
+	overflow-y: scroll;
+}	
+@pokemonSpriteWidth: 40px;
+@pokemonSpriteHeight: 30px;
+
+.pokemon {
+    float: left;
+    border-radius: 5px;
+    margin: 2px 2px 20px 2px;
+    position: relative;
+    transform:translate3d(0,0,0);
+
+	&:hover {
+    	background-color: silver;
+    	.pokemon-image {
+    		display: none;
+    	}
+    	.pokemon-capture {
+    		display: block;
+    	}
+	}
+
+	&.ui-selected {
+	    opacity: .4;
+	    background-color: #DDD;
+
+			.pokemon-capture {
+			    background: url('../images/pokeball.png') 12px 11px no-repeat;
+			}
+
+	    &:hover {
+    		opacity: .8;
+	    }
+	}
+
+	&.ui-selecting { 
+	    opacity: 1;
+	    background-color: #DDD; 
+
+		&:hover { 
+		    opacity: .8;
+		}
+
+    	.pokemon-image {
+    		display: none;
+    	}
+    	.pokemon-capture {
+    		display: block;
+    	}
+	}
+
+	&.ui-selected.ui-selecting { 
+	    opacity: 1;
+	    background-color: #DDD; 
+	}
+
+	.pokemon-image {
+	    background: url('../images/sprites-gen6.png') top left no-repeat;
+	    width: @pokemonSpriteWidth;
+	    height: @pokemonSpriteHeight;
+	    cursor: pointer;
+	}
+	
+	.pokemon-capture {
+    	display: none;
+		background: url('../images/empty-pokeball.png') 7px 1px no-repeat;
+	    width: @pokemonSpriteWidth;
+	    height: @pokemonSpriteHeight;
+	    cursor: pointer;
+   	}
+
+	.pokemon-id {
+	    text-align: center;
+	    width: 100%;
+	}
+
+}
+
+.boxes {
+	height: 270px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+.pokebox {
+	height: 240px;
+	width: 310px;
+	display: inline-block;
+
+	.pokebox-header {
+		background: linear-gradient(to bottom, #bfbfbf 0%,#e0e0e0 1%,#ffffff 100%);
+		border-top: 1px solid #FFF;
+		padding: 3px;
+
+		a {
+			color: #000;
+			text-transform: uppercase;
+		}
+
+		button.close {
+			margin-top: -3px;
+		}
+	}
+	
+	background-size: cover;
+	&.forest {background-image: url('../images/boxes/Box_Forest_VI.png')}
+	&.city {background-image: url('../images/boxes/Box_City_VI.png')}
+	&.desert {background-image: url('../images/boxes/Box_Desert_VI.png')}
+	&.savanna {background-image: url('../images/boxes/Box_Savanna_VI.png')}
+	&.crag {background-image: url('../images/boxes/Box_Crag_VI.png')}
+	&.volcano {background-image: url('../images/boxes/Box_Volcano_VI.png')}
+	&.snow {background-image: url('../images/boxes/Box_Snow_VI.png')}	
+	&.cave {background-image: url('../images/boxes/Box_Cave_VI.png')}
+	&.beach {background-image: url('../images/boxes/Box_Beach_VI.png')}
+	&.seafloor {background-image: url('../images/boxes/Box_Seafloor_VI.png')}
+	&.river {background-image: url('../images/boxes/Box_River_VI.png')}
+	&.sky {background-image: url('../images/boxes/Box_Sky_VI.png')}
+	&.pokecenter {background-image: url('../images/boxes/Box_Pokecenter_VI.png')}
+	&.machine {background-image: url('../images/boxes/Box_Machine_VI.png')}
+	&.checks {background-image: url('../images/boxes/Box_Checks_VI.png')}
+	&.simple {background-image: url('../images/boxes/Box_Simple_VI.png')}
+
+	&.move-pokemon{
+		background: silver;
+	}
+	
+	.pokebox-grid {
+		padding-top: 10px;
+
+		.pokebox-slot {
+			width: 40px;
+			background-color: rgba(0,0,0,.2);
+			height: 30px;
+			float: left;
+			margin: 2px;
+			position: relative;
+			
+			.pokemon {
+				margin: 0px;
+
+				&.ui-selected {
+					background: none;
+				}
+
+				&:hover {
+		    	background: none;
+		    	.pokemon-image {
+		    		display: block;
+		    	}
+		    	.pokemon-capture {
+		    		display: none;
+		    	}
+				}
+			}
+		}
+	}
+}
+.template {
+	display: none;
+}

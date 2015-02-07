@@ -1,0 +1,14 @@
+{{! Pokebox template}}
+<div class="template pokebox well">
+  <div class="pokebox-header text-center">
+    <button type="button" class="close">
+      <span>&times;</span>
+    </button>
+    <a href="#" class="pokebox-name" data-type="text"></a>
+  </div>
+  <div class="pokebox-grid">
+    {{#times 30}}
+    <div data-slot-id="{{this}}" class="pokebox-slot"></div>
+    {{/times}}
+  </div> 
+</div>

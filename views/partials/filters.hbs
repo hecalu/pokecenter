@@ -1,0 +1,26 @@
+<aside class="col-md-3">
+  <div class="fixed">
+    <p>You have <span class="my-pokemon-number">0 pokemons</span>.</p>
+    <p>
+      <a class="save-pokedex" href="#" role="button">
+        <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Save my pokedex
+      </a>
+    </p>
+    <p>
+      <a class="reset-pokedex" href="#" role="button">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Reset my pokedex
+      </a>
+    </p>
+    <div class="btn-group btn-group-vertical pokemon-filters" data-toggle="buttons">
+      <label class="btn btn-default active" data-filter="*">
+        <input type="radio" name="options"> All pokemons
+      </label>
+      <label class="btn btn-default" data-filter=".ui-selected" >
+        <input type="radio" name="options"> Only captured
+      </label>
+      <label class="btn btn-default" data-filter=":not(.ui-selected)">
+        <input type="radio" name="options"> Only remaining
+      </label>
+    </div>
+  </div>
+</aside>
