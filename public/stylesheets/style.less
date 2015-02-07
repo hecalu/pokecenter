@@ -33,7 +33,25 @@ a {
 .embed-pokedex {
 	height: 200px;
 	overflow-y: scroll;
-}	
+	
+	.pokemon {
+
+		&.ui-selected {
+			background: none;
+		}
+
+		&:hover {
+    	background: none;
+    	.pokemon-image {
+    		display: block;
+    	}
+    	.pokemon-capture {
+    		display: none;
+    	}
+		}
+	}
+}
+
 @pokemonSpriteWidth: 40px;
 @pokemonSpriteHeight: 30px;
 
