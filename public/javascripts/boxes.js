@@ -45,11 +45,11 @@ $(document).ready(function(){
 	});
 
 	// Add a new box
-	$('form.add-box').on('submit', function(e){
+	$('.create-box').on('click', function(e){
 		e.preventDefault();
 
-		var boxName = $(this).find('.new-pokebox-name').val();
-		var boxType = $(this).find('.new-pokebox-type').val();
+		var boxName = $('.new-pokebox-name').val();
+		var boxType = $('.new-pokebox-type').val();
 		if(boxName.length > 0 && myBoxes.isBoxNameUnique(boxName)) {
 			
 			// Try to add box	
@@ -58,7 +58,7 @@ $(document).ready(function(){
 				myBoxes.save(); // Save my boxes
 				self.addBox(newBox); // Build UI for new box
 				// Empty box name input
-				$(this).find('.new-pokebox-name').val('');
+				$('.new-pokebox-name').val('');
 			}
 		}
 	});
