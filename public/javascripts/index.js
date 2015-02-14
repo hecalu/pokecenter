@@ -15,15 +15,6 @@ $(document).ready(function(){
 	});
 
 	/**
-	 * Single selector
-	 */
-	/*$('.pokemon-capture').on('click', function(){
-		$(this).parents('.pokemon:first').toggleClass('ui-selected');
-		savePokedex();
-		$('.my-pokemon-number').text(myPokemons.length);	
-	});*/
-
-	/**
 	 * Multi selector
 	 */
 	var $currentlySelected = null;
@@ -84,6 +75,20 @@ $(document).ready(function(){
 		} else {
 			$('.my-pokemon-number').text(myPokemons.length + ' pokemons');	
 		}
+
+		// Update generation progression counters
+		var firstGenPokemons = $('.pokemon.ui-selected.generation-1').length;
+		var secondGenPokemons = $('.pokemon.ui-selected.generation-2').length;
+		var thirdGenPokemons = $('.pokemon.ui-selected.generation-3').length;
+		var fourthGenPokemons = $('.pokemon.ui-selected.generation-4').length;
+		var fifthGenPokemons = $('.pokemon.ui-selected.generation-5').length;
+		var sixthGenPokemons = $('.pokemon.ui-selected.generation-6').length;
+		$('.progress-bar.generation-1').css('width', firstGenPokemons / 151 * 100 + '%').text(firstGenPokemons + '/'+ 151);
+		$('.progress-bar.generation-2').css('width', $('.pokemon.ui-selected.generation-2').length / 100 * 100 + '%').text(secondGenPokemons + '/'+ 100);
+		$('.progress-bar.generation-3').css('width', $('.pokemon.ui-selected.generation-3').length / 135 * 100 + '%').text(thirdGenPokemons + '/'+ 135);
+		$('.progress-bar.generation-4').css('width', $('.pokemon.ui-selected.generation-4').length / 107 * 100 + '%').text(fourthGenPokemons + '/'+ 107);
+		$('.progress-bar.generation-5').css('width', $('.pokemon.ui-selected.generation-5').length / 156 * 100 + '%').text(fifthGenPokemons + '/'+ 156);
+		$('.progress-bar.generation-6').css('width', $('.pokemon.ui-selected.generation-6').length / 70 * 100 + '%').text(sixthGenPokemons + '/'+ 70);
 	}
 
 	var savePokedex = function() {
