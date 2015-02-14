@@ -97,7 +97,7 @@ $(document).ready(function(){
 						myBoxes.updateBox(box);
 						myBoxes.save();
 						$('[data-toggle="tooltip"]').tooltip();
-						if($pokemon.parents('.pokebox').length > 0) {
+						if($(ui.draggable).parents('.pokebox').length > 0) {
 		      		self.removePokemon($(ui.draggable));
 		      	}
 		      }
@@ -172,6 +172,7 @@ $(document).ready(function(){
 			originBox.removePokemon(originSlot);
 			// Then, update the changed box
 			myBoxes.updateBox(originBox);
+			myBoxes.save();
 		}
 		$slot.empty();
 	}

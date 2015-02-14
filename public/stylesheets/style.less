@@ -106,6 +106,10 @@ a {
 	    background-color: #DDD; 
 	}
 
+	&.ui-draggable-dragging {
+		background: none;
+	}
+
 	.pokemon-image {
 	    background: url('../images/sprites-gen6.png') top left no-repeat;
 	    width: @pokemonSpriteWidth;
@@ -186,7 +190,12 @@ a {
 			float: left;
 			margin: 2px;
 			position: relative;
+			z-index: 10;
 			
+			&.move-pokemon {
+				background-color: rgba(0,0,0,0.5);
+			}
+
 			.pokemon {
 				margin: 0px;
 

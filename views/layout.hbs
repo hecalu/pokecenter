@@ -26,11 +26,7 @@
       <header class="row">
 
         {{!-- Nav --}}
-        <nav id="menu" class="nav nav-pills">
-          <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}><a href="/">Pokedex</a></li>
-          <li role="presentation" {{#if boxes_is_active}}class="active"{{/if}}><a href="/boxes/">Boxes</a></li>
-          <li role="presentation" {{#if details_is_active}}class="active"{{/if}}><a href="/details/">Details</a></li>
-        </nav>
+        {{> menu}}
         
         {{!-- Generated content --}}
 		    {{{body}}}
