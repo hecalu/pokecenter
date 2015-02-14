@@ -83,15 +83,12 @@ $(document).ready(function(){
 		$box.find('.pokebox-slot').each(function(i, slot){
 			var $slot = $(slot);
 			$slot.bind('mousedown', function(event) { event.preventDefault() });
+
+			// Set new added box as droppable container for pokemon.
 			$slot.droppable({
 		      hoverClass: "move-pokemon",
 		      drop: function( event, ui ) {
-		      	var $pokemon = $(ui.draggable);
-		      	if($pokemon.parents('.pokebox').length > 0) {
-		      		self.removePokemon($(ui.draggable));
-		      	} else {
-		      		var $pokemon = $pokemon.clone();
-		      	}
+		      	var $pokemon = $(ui.draggable).clone();
 		      	
 		      	// Update box pokemon list
 		      	$slot.empty();
@@ -100,17 +97,21 @@ $(document).ready(function(){
 						myBoxes.updateBox(box);
 						myBoxes.save();
 						$('[data-toggle="tooltip"]').tooltip();
+						if($pokemon.parents('.pokebox').length > 0) {
+		      		self.removePokemon($(ui.draggable));
+		      	}
 		      }
 		  });
 		});
 
+		// Delete box when clicking on the cross btn
 		$box.find('.close').on('click', function(){
 			myBoxes.removeBox(box);
 			myBoxes.save();
 			$box.remove();
 		});
 		
-		// Fill slots with existing pokemon
+		// Fill slots with existing pokemons
 		$.each(box.pokemons, function(slot, pokemonID){
 			if(pokemonID != undefined) {
 				var $pokemon = $('.pokemon-'+pokemonID).clone();
@@ -123,8 +124,15 @@ $(document).ready(function(){
 		return $box;
 	}
 
+	/**
+	 * Graphically, add a pokemon in a box
+	 * @param {jQueryElement} $pokemon Pokemon to add
+	 * @param {jQueryElement} $slot Targeted slot of a pokebox
+	 */
 	this.addPokemon = function($pokemon, $slot) {
 		var self = this;
+		
+		// Make sure PokemonID is not present in slot
 		$pokemon.find('.pokemon-id').remove();
 		$pokemon.css({
 			'position': 'initial',
@@ -132,38 +140,53 @@ $(document).ready(function(){
 			'left': 0
 		});
 		
+		// Add pokemon DOM element in slot
 		$slot.append($pokemon);
 		
 		// Make pokemon draggable
 		$pokemon.draggable({
-			revert:true
+			revert:true,
+      appendTo: "body"
 		});
 
-		// Remove pokemon from slot on double click
+		// Remove pokemon from slot when double clicking on it
 		$pokemon.off('dblclick').on('dblclick', function(){
 			self.removePokemon($pokemon);
-			myBoxes.save();
+			myBoxes.save(); // Update local boxes storage
 		});
 
 	}
 
+	/**
+	 * Graphically, delete the given Pokemon element
+	 * @param  {jQueryElement} $pokemon Element to remove
+	 */
 	this.removePokemon = function($pokemon) {
+		// Retrieve pokemon slot & pokemon box to delete references
 		var $slot = $pokemon.parents('.pokebox-slot:first');
 		var originSlot = $slot.data('slot-id');
 		var originBox = $pokemon.parents('.pokebox:first').data('box');
+
 		if(originBox) {
+			// First remove pokemon from its box
 			originBox.removePokemon(originSlot);
+			// Then, update the changed box
 			myBoxes.updateBox(originBox);
 		}
 		$slot.empty();
 	}
 
+	/**
+	 * Show a boxes collection, by building corresponding DOM UI
+	 * @param  {Boxes} boxes
+	 */
 	this.showMyBoxes = function(boxes) {
 		$.each(boxes, function(i, myBox){
 			self.addBox(myBox);
 		});
 	}
 
+	// Show existing user's boxes
   self.showMyBoxes(myBoxes.getBoxes());
 
 	// Display pokemon names in tooltip
