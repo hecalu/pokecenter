@@ -1,10 +1,24 @@
-<nav id="menu" class="nav nav-pills">
-	<ul class="nav navbar-nav">
-	  <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}>
-	  	<a href="/"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Pokedex</a>
-	  </li>
-	  <li role="presentation" {{#if boxes_is_active}}class="active"{{/if}}>
-	  	<a href="/boxes/"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Boxes</a>
-	  </li>
-	</ul>
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<ul class="nav navbar-nav">
+		  <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}>
+		  	<a href="/"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Pokedex</a>
+		  </li>
+		  <li role="presentation" {{#if boxes_is_active}}class="active"{{/if}}>
+		  	<a href="/boxes/"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Boxes</a>
+		  </li>
+		</ul>
+	 	<div class="navbar-form navbar-left" action="/pokemon/">
+		  <form class="form-group view-pokemon-details">
+		    <input type="search" list="pokemon-names" class="view-pokemon form-control" placeholder="Find your pokemon">
+		    <datalist id="pokemon-names">
+		      {{#each pokedex}}
+		        <option data-pokemon-id="{{id}}" value="{{identifier}}">
+		      {{/each}}
+		    </datalist>
+		  </form>
+		</div>
+	</div>
 </nav>
+
+<script src="/javascripts/search.js"></script>

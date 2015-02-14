@@ -21,7 +21,7 @@ hbs.registerHelper('times', function(n, block) {
 // Set routing
 var indexRoutes = require('./routes/index');
 var boxesRoutes = require('./routes/boxes');
-var detailsRoutes = require('./routes/details');
+var pokemonRoutes = require('./routes/pokemon');
 
 var app = express();
 
@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes);
 app.use('/boxes', boxesRoutes);
-app.use('/details', detailsRoutes);
+app.use('/pokemon', pokemonRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
