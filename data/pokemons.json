@@ -7178,5 +7178,20 @@
     "base_experience":0,
     "order":778,
     "is_default":"1"
+  },
+  {
+    "id": 719,
+    "identifier": "Diancie",
+    "species_id": 719
+  },
+  {
+    "id": 720,
+    "identifier": "Hoopa",
+    "species_id": 720
+  },
+  {
+    "id": 721,
+    "identifier": "Volcanion",
+    "species_id": 721
   }
 ]

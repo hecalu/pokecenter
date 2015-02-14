@@ -12,7 +12,7 @@
 {{!-- Pokedex --}}
 <section class="pokedex col-md-9">
 	{{#each pokedex}}
-		<div data-id="{{id}}" data-toggle="tooltip" title="{{identifier}}" data-name="{{identifier}}" class="pokemon">
+		<div data-id="{{id}}" id="pokedex-pokemon-{{id}}" data-toggle="tooltip" title="{{identifier}}" data-name="{{identifier}}" class="pokemon generation-{{generation}}">
       <div class="pokemon-image" style="background-position: {{backgroundPosition}}"></div>
 			<div class="pokemon-capture"></div>
       <div class="pokemon-id">{{padId}}</div>
