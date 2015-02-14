@@ -4,8 +4,8 @@ $(document).ready(function(){
 		var pokemonName = $('.view-pokemon').val();
 		var $pokemonSearched = $(this).find('option[value="' + pokemonName + '"]');
 		if($pokemonSearched.length > 0) {
-			var pokemonId = $pokemonSearched.data('pokemon-id');
-			$(location).attr('href', '/pokemon/'+pokemonId);
+			// Redirect to pokepedia
+			window.open('http://www.pokepedia.fr/'+pokemonName, '_blank');
 		}
 	});
 });
