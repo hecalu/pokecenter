@@ -1,5 +1,5 @@
 <aside class="col-md-3">
-  <div class="fixed">
+  <div class="filters fixed">
     <p>You have <span class="my-pokemon-number">0 pokemons</span>.</p>
     <div class="form-group">
         <input type="search" list="pokemon-names" class="search-pokemon form-control" placeholder="Filter pokemons">
@@ -7,7 +7,7 @@
 
     <p class="generation-anchor">
       <a href="#pokedex-pokemon-1">
-        First generation
+        <span class="glyphicon glyphicon-tag"></span> First generation
       </a>
       <div class="progress">
         <div class="progress-bar generation-1" role="progressbar" style="width: 60%;"></div>
@@ -16,7 +16,7 @@
 
     <p class="generation-anchor">
       <a href="#pokedex-pokemon-152">
-        Second generation
+        <span class="glyphicon glyphicon-tag"></span> Second generation
       </a>
       <div class="progress">
         <div class="progress-bar generation-2" role="progressbar" style="width: 60%;"></div>
@@ -24,7 +24,7 @@
     </p>
     <p class="generation-anchor">
       <a href="#pokedex-pokemon-252">
-        Third generation
+        <span class="glyphicon glyphicon-tag"></span> Third generation
       </a>
       <div class="progress">
         <div class="progress-bar generation-3" role="progressbar" style="width: 60%;"></div>
@@ -32,7 +32,7 @@
     </p>
     <p class="generation-anchor">
       <a href="#pokedex-pokemon-387">
-        Fourth generation
+        <span class="glyphicon glyphicon-tag"></span> Fourth generation
       </a>
       <div class="progress">
         <div class="progress-bar generation-4" role="progressbar" style="width: 60%;"></div>
@@ -40,7 +40,7 @@
     </p>
     <p class="generation-anchor">
       <a href="#pokedex-pokemon-494">
-        Fifth generation
+        <span class="glyphicon glyphicon-tag"></span> Fifth generation
       </a>
       <div class="progress">
         <div class="progress-bar generation-5" role="progressbar" style="width: 60%;"></div>
@@ -48,7 +48,7 @@
     </p>
     <p class="generation-anchor">
       <a href="#pokedex-pokemon-650">
-        Sixth generation
+        <span class="glyphicon glyphicon-tag"></span> Sixth generation
       </a>
       <div class="progress">
         <div class="progress-bar generation-6" role="progressbar" style="width: 60%;"></div>
@@ -65,15 +65,15 @@
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Reset my pokedex
       </a>
     </p>
-    <div class="btn-group btn-group-vertical pokemon-filters" data-toggle="buttons">
+    <div class="btn-group pokemon-filters" data-toggle="buttons">
       <label class="btn btn-default active" data-filter="*">
-        <input type="radio" name="options"> All pokemons
+        <input type="radio" name="options"> All
       </label>
       <label class="btn btn-default" data-filter=".ui-selected" >
-        <input type="radio" name="options"> Only captured
+        <input type="radio" name="options"> Caught
       </label>
       <label class="btn btn-default" data-filter=":not(.ui-selected)">
-        <input type="radio" name="options"> Only remaining
+        <input type="radio" name="options"> Remaining
       </label>
     </div>
   </div>

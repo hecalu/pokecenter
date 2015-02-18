@@ -7,7 +7,6 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-      <link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
       <link rel="stylesheet" href="/stylesheets/style.css">
 
       <!--[if lt IE 9]>
@@ -22,20 +21,20 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="main">
       <header class="row">
         {{!-- Nav --}}
         {{> menu}}
       </header>
 
-      <div class="content">
+      <div class="content container">
         {{!-- Generated content --}}
         {{{body}}}
       </div>
       
-      <hr>
-
-      <footer>
+    </div>
+    <div class="container">
+      <footer class="row">
         Made by ♥ for my ♥
       </footer>
     </div> <!-- /container -->

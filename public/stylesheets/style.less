@@ -1,11 +1,27 @@
+
+
 body {
-	background: rgb(239, 239, 239);
-  padding: 50px;
+  padding-top: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #444444;
+}
+
+.main {
+	background: #f0f0f0 url('../images/bg.gif');
+	border-bottom: 1px solid #e5e5e5;
 }
 
 a {
   color: #00B7FF;
+}
+
+hr {
+	border-top: 1px solid #dddddd;
+}
+
+footer {
+	background: #fff;
+	padding: 20px 0;
 }
 
 .input-group-btn select {
@@ -18,10 +34,16 @@ a {
 
 #menu {
 	margin-bottom: 20px;
+	background: rgba(47,47,47,0.98);
+}
+#menu .active a {
+	background: none;
 }
 
-.fixed {
+.filters.fixed {
 	position: fixed;
+	width: 280px;
+	margin-left: -15px;
 }
 
 .pokedex {
@@ -140,7 +162,7 @@ a {
 	
 	.pokemon-capture {
     	display: none;
-		background: url('../images/empty-pokeball.png') 7px 1px no-repeat;
+			background: url('../images/empty-pokeball.png') 7px 1px no-repeat;
 	    width: @pokemonSpriteWidth;
 	    height: @pokemonSpriteHeight;
 	    cursor: pointer;
