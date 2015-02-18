@@ -83,12 +83,18 @@ $(document).ready(function(){
 		var fourthGenPokemons = $('.pokemon.ui-selected.generation-4').length;
 		var fifthGenPokemons = $('.pokemon.ui-selected.generation-5').length;
 		var sixthGenPokemons = $('.pokemon.ui-selected.generation-6').length;
-		$('.progress-bar.generation-1').css('width', firstGenPokemons / 151 * 100 + '%').text(firstGenPokemons + '/'+ 151);
-		$('.progress-bar.generation-2').css('width', $('.pokemon.ui-selected.generation-2').length / 100 * 100 + '%').text(secondGenPokemons + '/'+ 100);
-		$('.progress-bar.generation-3').css('width', $('.pokemon.ui-selected.generation-3').length / 135 * 100 + '%').text(thirdGenPokemons + '/'+ 135);
-		$('.progress-bar.generation-4').css('width', $('.pokemon.ui-selected.generation-4').length / 107 * 100 + '%').text(fourthGenPokemons + '/'+ 107);
-		$('.progress-bar.generation-5').css('width', $('.pokemon.ui-selected.generation-5').length / 156 * 100 + '%').text(fifthGenPokemons + '/'+ 156);
-		$('.progress-bar.generation-6').css('width', $('.pokemon.ui-selected.generation-6').length / 70 * 100 + '%').text(sixthGenPokemons + '/'+ 70);
+		$('.progress-bar.generation-1').css('width', firstGenPokemons / 151 * 100 + '%');
+		$('.generation-1-progression').text(firstGenPokemons + '/'+ 151);
+		$('.progress-bar.generation-2').css('width', $('.pokemon.ui-selected.generation-2').length / 100 * 100 + '%');
+		$('.generation-2-progression').text(secondGenPokemons + '/'+ 100);
+		$('.progress-bar.generation-3').css('width', $('.pokemon.ui-selected.generation-3').length / 135 * 100 + '%');
+		$('.generation-3-progression').text(thirdGenPokemons + '/'+ 135);
+		$('.progress-bar.generation-4').css('width', $('.pokemon.ui-selected.generation-4').length / 107 * 100 + '%');
+		$('.generation-4-progression').text(fourthGenPokemons + '/'+ 107);
+		$('.progress-bar.generation-5').css('width', $('.pokemon.ui-selected.generation-5').length / 156 * 100 + '%');
+		$('.generation-5-progression').text(fifthGenPokemons + '/'+ 156);
+		$('.progress-bar.generation-6').css('width', $('.pokemon.ui-selected.generation-6').length / 70 * 100 + '%');
+		$('.generation-6-progression').text(sixthGenPokemons + '/'+ 70);
 	}
 
 	var savePokedex = function() {
