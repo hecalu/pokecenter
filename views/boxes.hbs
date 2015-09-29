@@ -1,10 +1,11 @@
 {{!-- Boxes --}}
-<h1>Boxes</h1>
+<h1>Pokebank Boxes</h1>
 
 {{!-- Pokedex --}}
 <div class="col-md-12">
-  <div class="embed-pokedex col-md-12">
-  	<div class="pokedex">
+  <div class="boxes col-md-12">
+    <h2>Your pokemons</h2>
+  	<div class="embed-pokedex">
   		{{#each pokedex}}
   			<div data-id="{{id}}" data-toggle="tooltip" title="{{identifier}}" data-name="{{identifier}}" class="pokemon pokemon-{{id}}">
         		<div class="pokemon-image" style="background-position: {{backgroundPosition}}"></div>
@@ -14,9 +15,11 @@
   		{{/each}}
   	</div>
 	</div>
-	<hr>
+
+  <hr>
 
 	{{!-- Create box --}}
+  <h2>Your boxes</h2>
 	<form class="form-horizontal col-md-12">
 	  <div class="form-group">
 	    <div class="col-md-4">

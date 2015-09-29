@@ -1,113 +1,111 @@
-<aside class="filters col-md-3">
-  <div class="fixed">
-    <p>You have <span class="my-pokemon-number">0 pokemons</span>.</p>
-    
-    <hr>
-    <h4>Progression</h4>
-    <ul class="nav nav-pills nav-stacked">
-      <li>
-        <a href="#pokedex-pokemon-1">
-          <span class="pull-right">
-            <span class="generation-1-progression"></span>
-          </span>
-          Gen #1
-          <div class="progress generation-progress">
-            <div class="progress-bar generation-1" role="progressbar" style="width: 60%;"></div>
-          </div>
-        </a>
-      </li>
-
-      <li>
-        <a href="#pokedex-pokemon-152">
-          <span class="pull-right">
-            <span class="generation-2-progression"></span>
-          </span>
-          Gen #2
-          <div class="progress generation-progress">
-            <div class="progress-bar generation-2" role="progressbar" style="width: 60%;"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#pokedex-pokemon-252">
-          <span class="pull-right">
-            <span class="generation-3-progression"></span>
-          </span>
-          Gen #3
-          <div class="progress generation-progress">
-            <div class="progress-bar generation-3" role="progressbar" style="width: 60%;"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#pokedex-pokemon-387">
-          <span class="pull-right">
-            <span class="generation-4-progression"></span>
-          </span>
-          Gen #4
-          <div class="progress generation-progress">
-            <div class="progress-bar generation-4" role="progressbar" style="width: 60%;"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#pokedex-pokemon-494">
-          <span class="pull-right">
-            <span class="generation-5-progression"></span>
-          </span>
-          Gen #5
-          <div class="progress generation-progress">
-            <div class="progress-bar generation-5" role="progressbar" style="width: 60%;"></div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="#pokedex-pokemon-650">
-          <span class="pull-right">
-            <span class="generation-6-progression"></span>
-          </span>
-          Gen #6
-          <div class="progress generation-progress">
-            <div class="progress-bar generation-6" role="progressbar" style="width: 60%;"></div>
-          </div>
-        </a>
-      </li>
-    </ul>
-    
-    <hr>
-
-    <!-- Filter pokemon by name/ID -->
-
-    <h4>Filters</h4>
-    <div class="form-group">
-        <input type="search" list="pokemon-names" class="search-pokemon form-control" placeholder="Filter pokemons">
-    </div>
-
-    <!-- Filters radio -->
-    <div class="btn-group pokemon-filters" data-toggle="buttons">
-      <label class="btn btn-default active" data-filter="*">
-        <input type="radio" name="options"> All
-      </label>
-      <label class="btn btn-default" data-filter=".ui-selected" >
-        <input type="radio" name="options"> Caught
-      </label>
-      <label class="btn btn-default" data-filter=":not(.ui-selected)">
-        <input type="radio" name="options"> Remaining
-      </label>
-    </div>
-    
-    <hr>
-
+<aside class="filters col-md-2">
+  <p class="caught-pokemons-highlight">You have <span class="my-pokemon-number">0 pokemons</span></p>
   
-    <p>
-      <a class="save-pokedex" href="#" role="button">
-        <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Save my pokedex
+  <hr>
+  <h4>Progression</h4>
+  <ul class="nav nav-pills nav-stacked">
+    <li>
+      <a href="#pokedex-pokemon-1">
+        <span class="pull-right">
+          <span class="generation-1-progression"></span>
+        </span>
+        Gen #1
+        <div class="progress generation-progress">
+          <div class="progress-bar generation-1" role="progressbar" style="width: 60%;"></div>
+        </div>
       </a>
-    </p>
-    <p>
-      <a class="reset-pokedex" href="#" role="button">
-        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Reset my pokedex
+    </li>
+
+    <li>
+      <a href="#pokedex-pokemon-152">
+        <span class="pull-right">
+          <span class="generation-2-progression"></span>
+        </span>
+        Gen #2
+        <div class="progress generation-progress">
+          <div class="progress-bar generation-2" role="progressbar" style="width: 60%;"></div>
+        </div>
       </a>
-    </p>
+    </li>
+    <li>
+      <a href="#pokedex-pokemon-252">
+        <span class="pull-right">
+          <span class="generation-3-progression"></span>
+        </span>
+        Gen #3
+        <div class="progress generation-progress">
+          <div class="progress-bar generation-3" role="progressbar" style="width: 60%;"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#pokedex-pokemon-387">
+        <span class="pull-right">
+          <span class="generation-4-progression"></span>
+        </span>
+        Gen #4
+        <div class="progress generation-progress">
+          <div class="progress-bar generation-4" role="progressbar" style="width: 60%;"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#pokedex-pokemon-494">
+        <span class="pull-right">
+          <span class="generation-5-progression"></span>
+        </span>
+        Gen #5
+        <div class="progress generation-progress">
+          <div class="progress-bar generation-5" role="progressbar" style="width: 60%;"></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#pokedex-pokemon-650">
+        <span class="pull-right">
+          <span class="generation-6-progression"></span>
+        </span>
+        Gen #6
+        <div class="progress generation-progress">
+          <div class="progress-bar generation-6" role="progressbar" style="width: 60%;"></div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  
+  <hr>
+
+  <!-- Filter pokemon by name/ID -->
+
+  <h4>Filters</h4>
+  <div class="form-group">
+      <input type="search" list="pokemon-names" class="search-pokemon form-control" placeholder="Filter pokemons">
   </div>
+
+  <!-- Filters radio -->
+  <div class="btn-group pokemon-filters" data-toggle="buttons">
+    <label class="btn btn-default active" data-filter="*">
+      <input type="radio" name="options"> All
+    </label>
+    <label class="btn btn-default" data-filter=".ui-selected" >
+      <input type="radio" name="options"> Caught
+    </label>
+    <label class="btn btn-default" data-filter=":not(.ui-selected)">
+      <input type="radio" name="options"> Remaining
+    </label>
+  </div>
+  
+  <hr>
+
+
+  <p>
+    <a class="save-pokedex" href="#" role="button">
+      <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Save my pokedex
+    </a>
+  </p>
+  <p>
+    <a class="reset-pokedex" href="#" role="button">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Reset my pokedex
+    </a>
+  </p>
 </aside>

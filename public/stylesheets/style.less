@@ -42,13 +42,18 @@ footer {
 }
 
 .filters {
-}
-.filters .fixed {
-	position: fixed;
-	width: 265px;
-	background: rgba(0,0,0,0.05);
+	position: absolute;
+	background: #e8e8e8;
 	padding: 10px 10px 18px 10px;
 	border-radius: 5px;
+	border: 1px solid #e5e5e5;
+
+	.caught-pokemons-highlight {
+		margin: auto;
+    width: 60%;
+    text-align: center;
+    font-size: 28px;
+	}
 }
 
 .generation-progress {
@@ -71,6 +76,11 @@ footer {
 
 		&.ui-selected {
 			background: none;
+	    opacity: 1;
+		}
+
+		&:not(.ui-selected) {
+			opacity: .4;	
 		}
 
 		&:hover {
@@ -209,10 +219,11 @@ footer {
 }
 
 .boxes {
-	height: 270px;
+	height: 280px;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;
+  margin-bottom: 20px;
 }
 .pokebox {
 	height: 240px;
