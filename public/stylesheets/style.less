@@ -69,7 +69,7 @@ footer {
 	}
 }
 .embed-pokedex {
-	height: 200px;
+	height: 540px;
 	overflow-y: scroll;
 	
 	.pokemon {
@@ -132,9 +132,9 @@ footer {
 	    opacity: 1;
 	    background-color: #DDD; 
 
-		&:hover { 
-		    opacity: .8;
-		}
+			&:hover { 
+			    opacity: .8;
+			}
 
     	.pokemon-image {
     		display: none;
@@ -151,6 +151,12 @@ footer {
 
 	&.ui-draggable-dragging {
 		background: none;
+		opacity: 1;
+		z-index: 20;
+
+		.pokemon-id {
+			display: none;
+		}
 	}
 
 	
@@ -219,16 +225,17 @@ footer {
 }
 
 .boxes {
-	height: 280px;
-	overflow-x: scroll;
-	overflow-y: hidden;
-	white-space: nowrap;
+	overflow-x: hidden;
+  overflow-y: scroll;
+  white-space: nowrap;
   margin-bottom: 20px;
+  height: 500px;
 }
 .pokebox {
 	height: 240px;
 	width: 310px;
-	display: inline-block;
+  display: block;
+  float: left;
 
 	.pokebox-header {
 		background: linear-gradient(to bottom, #bfbfbf 0%,#e0e0e0 1%,#ffffff 100%);
@@ -288,6 +295,7 @@ footer {
 
 				&.ui-selected {
 					background: none;
+					opacity: 1;
 				}
 
 				&:hover {

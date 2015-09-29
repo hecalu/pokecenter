@@ -1,9 +1,9 @@
-<h1>National Pokedex</h1>
-
-{{!-- Filters --}}
+<h1>Your Pokedex</h1>
+<p>You can track your progression by filling the following pokedex. Everything is saved at each modifications.</p>
+{{!-- Includes Filters block --}}
 {{> filters}}
 
-{{!-- Pokedex --}}
+{{!-- Includes Pokedex block --}}
 <section class="pokedex col-md-10 col-md-offset-2">
 	{{#each pokedex}}
 		<div data-id="{{id}}" id="pokedex-pokemon-{{id}}" data-toggle="tooltip" title="{{identifier}} - Generation #{{generation}}" data-name="{{identifier}}" class="pokemon generation-{{generation}}">

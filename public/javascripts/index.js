@@ -24,39 +24,37 @@ $(document).ready(function(){
 	 */
 	var $currentlySelected = null;
 	var selected = [];
+	// Make pokemons selectable
+	
 	$pokedex.bind('mousedown', function(e){
 		e.metaKey = true;
+
 	}).selectable({
 		autoRefresh: false,
 		filter: '.pokemon',
-	    start: function(event, ui) {
-	        $currentlySelected = $('.ui-selected');
-	    },
-	    stop: function(event, ui) {
-	        for (var i = 0; i < selected.length; i++) {
-	            if ($.inArray(selected[i], $currentlySelected) >= 0) {
-	              $(selected[i]).removeClass('ui-selected');
-	            }
-	        }
-	        selected = [];
+    start: function(event, ui) { // On mouse down
+      $currentlySelected = $('.ui-selected');
+    },
+    stop: function(event, ui) { // On mouse up
+      // Remove caught class on selected pokemon
+      for (var i = 0; i < selected.length; i++) {
+          if ($.inArray(selected[i], $currentlySelected) >= 0) {
+            $(selected[i]).removeClass('ui-selected');
+          }
+      }
+      selected = [];
 
-	        var selectedPokemons = [];
-			$('.ui-selected').each(function(){
-				var $pokemon = $(this);
-				selectedPokemons.push($pokemon.data('id'));
-			});
-			myPokemons = selectedPokemons;
-			
+      // Save pokedex and update the pokemon caught counter.
+      savePokedex();
 			updatePokemonCounter();
-
-			localStorage.setItem('myPokemons', JSON.stringify(myPokemons));
-	    },
-	    selecting: function(event, ui) {
-	        $currentlySelected.addClass('ui-selected'); // re-apply ui-selected class to currently selected items
-	    },
-	    selected: function(event, ui) {
-	        selected.push(ui.selected); 
-	    }
+    },
+    // Styles tweaks
+    selecting: function(event, ui) {
+        $currentlySelected.addClass('ui-selected'); // re-apply ui-selected class to currently selected items
+    },
+    selected: function(event, ui) {
+        selected.push(ui.selected); 
+    }
 	});
 	
 
@@ -68,10 +66,19 @@ $(document).ready(function(){
 		});
 	}
 
+	/**
+	 * Clean saved pokedex.
+	 */
 	var resetPokedex = function() {
-		$('.ui-selected').removeClass('ui-selected');
-		myPokemons = [];
-		updatePokemonCounter();
+		// Ask twice user for this.
+		if(confirm('Are you sure you want to reset your pokedex ? You will lose all your progression !')) {
+			if(confirm('Are you REALLY sure to do that ?')) {
+				$('.ui-selected').removeClass('ui-selected');
+				myPokemons = [];
+				updatePokemonCounter();
+				savePokedex();
+			}
+		}
 	}
 
 	var updatePokemonCounter = function() {
@@ -115,7 +122,6 @@ $(document).ready(function(){
 	updatePokemonCounter();
 
 	$('a.reset-pokedex').on('click', resetPokedex);
-	$('a.save-pokedex').on('click', savePokedex);
 
 	// Display pokemon names in tooltip
 	$('[data-toggle="tooltip"]').tooltip();
@@ -140,5 +146,4 @@ $(document).ready(function(){
 			filter: filterValue
 		});
 	});
-
 });

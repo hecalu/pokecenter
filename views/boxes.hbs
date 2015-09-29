@@ -2,8 +2,8 @@
 <h1>Pokebank Boxes</h1>
 
 {{!-- Pokedex --}}
-<div class="col-md-12">
-  <div class="boxes col-md-12">
+<div class="row">
+  <div class="col-md-6">
     <h2>Your pokemons</h2>
   	<div class="embed-pokedex">
   		{{#each pokedex}}
@@ -14,61 +14,51 @@
   			</div>
   		{{/each}}
   	</div>
-	</div>
-
-  <hr>
-
-	{{!-- Create box --}}
-  <h2>Your boxes</h2>
-	<form class="form-horizontal col-md-12">
-	  <div class="form-group">
-	    <div class="col-md-4">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <select class="new-pokebox-type btn">
-              <option value="forest">Forest</option>
-              <option value="city">City</option>
-              <option value="desert">Desert</option>
-              <option value="savanna">Savanna</option>
-              <option value="crag">Crag</option>
-              <option value="volcano">Volcano</option>
-              <option value="snow">Snow</option>
-              <option value="cave">Cave</option>
-              <option value="beach">Beach</option>
-              <option value="seafloor">Seafloor</option>
-              <option value="river">River</option>
-              <option value="sky">Sky</option>
-              <option value="pokecenter">Pokecenter</option>
-              <option value="machine">Machine</option>
-              <option value="checks">Checks</option>
-              <option value="simple">Simple</option>
-            </select>
-          </span>
-          <input type="text" class="new-pokebox-name form-control" placeholder="Name your box">
-          <span class="input-group-btn">
-            <button class="create-box btn btn-default" type="button"><span class="glyphicon glyphicon-plus"></span></button>
-          </span>
-        </div>
-	    </div>
-      <div class="col-md-4">
+  </div>
+    
+  <div class="col-md-6">
+    {{!-- Create box --}}
+    <h2>Your boxes</h2>
+    <div class="row">
+      <form class="form-horizontal col-md-12">
         <div class="form-group">
-          <input type="search" list="pokemon-names" class="search-pokemon form-control" placeholder="Find your pokemon">
-          <datalist id="pokemon-names">
-            {{#each pokedex}}
-              <option value="{{identifier}}">
-            {{/each}}
-          </datalist>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <select class="new-pokebox-type btn">
+                  <option value="forest">Forest</option>
+                  <option value="city">City</option>
+                  <option value="desert">Desert</option>
+                  <option value="savanna">Savanna</option>
+                  <option value="crag">Crag</option>
+                  <option value="volcano">Volcano</option>
+                  <option value="snow">Snow</option>
+                  <option value="cave">Cave</option>
+                  <option value="beach">Beach</option>
+                  <option value="seafloor">Seafloor</option>
+                  <option value="river">River</option>
+                  <option value="sky">Sky</option>
+                  <option value="pokecenter">Pokecenter</option>
+                  <option value="machine">Machine</option>
+                  <option value="checks">Checks</option>
+                  <option value="simple">Simple</option>
+                </select>
+              </span>
+              <input type="text" class="new-pokebox-name form-control" placeholder="Name your box">
+              <span class="input-group-btn">
+                <button class="create-box btn btn-default" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-	  </div>
-	</form>
+      </form>
+    </div>
+    <div class="row">
+      <div class="boxes"></div>
+      {{> pokebox}}
+    </div>
+  </div>
 </div>
-
-<div class="row">
-  <div class="boxes col-md-12"></div>
-  {{> pokebox}}
-</div>
-
 
 {{!-- Javascript --}}
 <script src="/javascripts/models/pokebox.js"></script>

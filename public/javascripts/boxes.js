@@ -22,22 +22,6 @@ $(document).ready(function(){
 		});
 	}
 
-	// Filter by Name
-	$('.search-pokemon').on('keyup', function(){
-		var searchValue = $(this).val().toLowerCase();
-		$pokedex.isotope({
-			resizable: false,
-			resizesContainer : false,
-			filter: function() {
-		    var name = $(this).data('id') + $(this).data('name').toLowerCase();
-		    return name.match( searchValue );
-  		}
-		});
-		// Reset label filters
-		$('.pokemon-filters label').removeClass('active');
-	});
-
-
 	// Make pokemons draggable
 	$('.pokemon').draggable({
       appendTo: "body",
@@ -106,9 +90,13 @@ $(document).ready(function(){
 
 		// Delete box when clicking on the cross btn
 		$box.find('.close').on('click', function(){
-			myBoxes.removeBox(box);
-			myBoxes.save();
-			$box.remove();
+			// Prompt user before doing anything
+			if(confirm('Are you sure you want to remove this box?')) { 
+				// Remove selected box
+				myBoxes.removeBox(box);
+				myBoxes.save();
+				$box.remove();
+			}
 		});
 		
 		// Fill slots with existing pokemons
