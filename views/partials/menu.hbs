@@ -20,7 +20,7 @@
 		  <form class="form-group view-pokemon-details">
 		  	
 		  	{{!-- Redirect to wikipedia page according selected pokemon --}}
-		    <input type="search" list="pokemon-names" class="view-pokemon form-control" placeholder="Find your pokemon">
+		    <input type="search" list="pokemon-names" class="view-pokemon form-control" placeholder="Find by name">
 		    
 		    {{!-- All pokemon list --}}
 		    <datalist id="pokemon-names">
@@ -31,7 +31,32 @@
 
 		  </form>
 		</div>
+
+		<ul class="nav navbar-nav navbar-right">
+			
+			{{#if user}}
+
+				{{!-- User connected --}}
+				<li>
+					<a href="/user/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
+				</li>
+
+			{{else}}
+
+				<li>
+          <a href="/user/register">
+          	Register
+          </a>
+        </li>
+				<li>
+          <a href="/user/login">
+          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login
+          </a>
+        </li>
+
+			{{/if}}
+      </ul>
 	</div>
 </nav>
 
-<script src="/javascripts/search.js"></script>
+<script src="/javascripts/menu.js"></script>

@@ -3,7 +3,7 @@ $(document).ready(function(){
 	// Simulate position fixed on filters column
 	var filtersOriginalTopPosition = $('.filters').offset().top;
 	$(window).scroll(function() {
-  	$('.filters').stop().animate({'top': $(this).scrollTop() + filtersOriginalTopPosition + "px"}, 250);
+		//$('.filters').stop().animate({'top': $(this).scrollTop() + filtersOriginalTopPosition + "px"}, 250);
 	});
 
 	var $pokedex = $('.pokedex');

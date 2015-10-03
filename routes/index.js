@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var pokemons = require('../data/generated-pokemons.json');
+var express   = require('express');
+var router    = express.Router();
+var pokemons  = require('../data/generated-pokemons.json');
 
 function pad(num, size) {
     var s = num+"";

@@ -1,40 +1,28 @@
 // Includes
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var hbs     = require('hbs');
+var express         = require('express');
+var app             = express();
 
-// Configure partials in template engine
-hbs.registerPartials(__dirname + '/views/partials');
+var databaseConfig  = require('./config/database');
+var session         = require('express-session');
+var path            = require('path');
+var morgan          = require('morgan');    // Logger
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var hbs             = require('hbs');
 
-// Custom 'for' loop helper
-hbs.registerHelper('times', function(n, block) {
-    var accum = '';
-    for(var i = 0; i < n; ++i)
-        accum += block.fn(i);
-    return accum;
-});
+var mongoose    = require('mongoose');
+var MongoStore  = require('connect-mongo')(session);
+var passport    = require('passport');
+var flash       = require('connect-flash');
 
-// Set routing
-var indexRoutes = require('./routes/index');
-var boxesRoutes = require('./routes/boxes');
-var pokemonRoutes = require('./routes/pokemon');
+// Database ========================================================
+mongoose.connect(databaseConfig.mongoUrl);
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
+// Configuration ===================================================
+app.use(morgan('dev')); // log every request to the console
+app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser());    // read cookies (needed for auth)
 app.use(require('less-middleware')(path.join(__dirname, 'public'), {
     compiler: {
         sourceMap: true
@@ -42,7 +30,34 @@ app.use(require('less-middleware')(path.join(__dirname, 'public'), {
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Session  ========================================================
+require('./config/passport')(passport);
+app.use(session({
+    secret: databaseConfig.secret,
+    saveUninitialized: true,
+    resave: true,
+    store: new MongoStore({
+        url: databaseConfig.mongoUrl
+    })
+}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// Use for storing user session and share it to the view
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
+// Routes ==========================================================
+var indexRoutes     = require('./routes/index');
+var sessionRoutes   = require('./routes/session');
+var boxesRoutes     = require('./routes/boxes');
+var pokemonRoutes   = require('./routes/pokemon');
+
 app.use('/', indexRoutes);
+app.use('/user', sessionRoutes);
 app.use('/boxes', boxesRoutes);
 app.use('/pokemon', pokemonRoutes);
 
@@ -53,11 +68,21 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-// error handlers
+// Template engine ==================================================
+hbs.registerPartials(__dirname + '/views/partials'); // Configure partials in template engine
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
+hbs.registerHelper('times', function(n, block) { // Custom 'for' loop helper
+    var accum = '';
+    for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+
+// Environnement ====================================================
+if (app.get('env') === 'development') { // Dev env will print stacktrack
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
@@ -67,9 +92,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) { // Prod env: no stacktraces leaked to user
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
