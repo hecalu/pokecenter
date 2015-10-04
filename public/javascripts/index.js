@@ -20,7 +20,8 @@ $(document).ready(function(){
 	} 
 
 	$pokedex.isotope({
-		itemSelector: '.pokemon'
+		itemSelector: '.pokemon',
+		transitionDuration: 0
 	}).isotope( 'on', 'layoutComplete', function( isoInstance, laidOutItems ) {
 		$pokedex.selectable('refresh');
 	});
@@ -139,7 +140,7 @@ $(document).ready(function(){
 	$('a.reset-pokedex').on('click', resetPokedex);
 
 	// Display pokemon names in tooltip
-	$('[data-toggle="tooltip"]').tooltip();
+	$('[data-toggle="tooltip"]').tooltip({animation: false});
 
 	// Filter by Name
 	$('.search-pokemon').on('change', function(){

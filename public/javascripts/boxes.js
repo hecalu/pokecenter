@@ -78,7 +78,7 @@ $(document).ready(function(){
 		      	self.addPokemon($pokemon, $slot);
 						box.addPokemon($pokemon.data('id'), $slot.data('slot-id'));
 						myBoxes.updateBox(box);
-						$('[data-toggle="tooltip"]').tooltip();
+						$('[data-toggle="tooltip"]').tooltip({animation: false});
 						if($(ui.draggable).parents('.pokebox').length > 0) {
 		      		self.removePokemon($(ui.draggable));
 		      	}
@@ -177,5 +177,5 @@ $(document).ready(function(){
   self.showMyBoxes(myBoxes.getBoxes());
 
 	// Display pokemon names in tooltip
-	$('[data-toggle="tooltip"]').tooltip();
+	$('[data-toggle="tooltip"]').tooltip({animation: false});
 });
