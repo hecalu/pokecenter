@@ -94,12 +94,19 @@ app.use(function(req, res, next) {
 // Template engine ==================================================
 hbs.registerPartials(__dirname + '/views/partials'); // Configure partials in template engine
 
+// Helper to implement "for" loop
 hbs.registerHelper('times', function(n, block) { // Custom 'for' loop helper
     var accum = '';
     for(var i = 0; i < n; ++i)
         accum += block.fn(i);
     return accum;
 });
+
+// Helper for generate odd/even string
+hbs.registerHelper("stripes", function(index) {
+     return (index % 2 == 0 ? "even" : "odd");
+});
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 

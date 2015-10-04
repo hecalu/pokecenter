@@ -7,7 +7,7 @@ var PokeBoxes = function() {
 	this.load = function() {
 		var self = this;
 		try {
-			if(myDbBoxes) { // Try retrieve data from DB
+			if(userIsAuthenticated) { // Try retrieve data from DB
 				var myBoxes = myDbBoxes;
 
 			} else { //Fallback for old system on localstorage

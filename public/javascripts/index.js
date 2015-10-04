@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 	var $pokedex = $('.pokedex');
 	try {
-		if(myDbPokemons) { // Try retrieve data from DB
+		if(userIsAuthenticated) { // Try retrieve data from DB
 			var myPokemons = myDbPokemons;
 
 		} else { //Fallback for old system on localstorage

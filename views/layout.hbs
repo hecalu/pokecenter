@@ -48,6 +48,12 @@
         var myDbPokemons        = {{{user.pokemons}}};
         var myDbBoxes           = {{{user.boxes}}};
       </script>
+
+    {{else}}
+      <script>
+        var userIsAuthenticated = false;
+      </script>
+
     {{/if}}
 
   </body>

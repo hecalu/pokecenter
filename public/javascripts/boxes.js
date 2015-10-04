@@ -8,10 +8,16 @@ $(document).ready(function(){
 
 	var $pokedex = $('.pokedex');
 	try {
-		var myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || [];
+		if(userIsAuthenticated) { // Try retrieve data from DB
+			var myPokemons = myDbPokemons;
+
+		} else { //Fallback for old system on localstorage
+			var myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || [];
+		} 
+		
 	} catch(e) {
 		var myPokemons = [];
-	}
+	} 
 
 	// Add style on captured pokemon
 	if(myPokemons.length > 0) {
@@ -54,8 +60,11 @@ $(document).ready(function(){
 		var $boxes = $('.boxes');
 		var $box = $('.template.pokebox').clone().removeClass('template').appendTo($boxes);
 		$box.addClass(box.type);
+
+		// When editing box name
 		$box.find('.pokebox-name').text(box.name).editable({
 			success: function(response, newValue){
+				// Save new box name
 				box.name = newValue;
 				myBoxes.updateBox(box);
 				myBoxes.save();
@@ -63,6 +72,8 @@ $(document).ready(function(){
 		});
 
 		$box.data('box', box);
+
+		// Init slots in the new box
 		$box.find('.pokebox-slot').each(function(i, slot){
 			var $slot = $(slot);
 			$slot.bind('mousedown', function(event) { event.preventDefault() });
@@ -101,13 +112,17 @@ $(document).ready(function(){
 		// Fill slots with existing pokemons
 		$.each(box.pokemons, function(slot, pokemonID){
 			if(pokemonID != undefined) {
-				var $pokemon = $('.pokemon-'+pokemonID).clone();
+				var $pokemon = $('.embed-pokedex .pokemon-'+pokemonID).clone();
 				var $slot = $box.find('.pokebox-slot:eq('+slot+')');
 				if($slot) {
 					self.addPokemon($pokemon, $slot);
 				}
 			}
 		});
+
+		// Save new box
+		myBoxes.save();
+
 		return $box;
 	}
 
@@ -142,6 +157,7 @@ $(document).ready(function(){
 			},
       appendTo: "body"
 		});
+		$pokemon.css('z-index', 30);
 	}
 
 	/**
