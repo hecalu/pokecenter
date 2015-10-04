@@ -8,7 +8,13 @@ $(document).ready(function(){
 
 	var $pokedex = $('.pokedex');
 	try {
-		var myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || [];
+		if(myDbPokemons) { // Try retrieve data from DB
+			var myPokemons = myDbPokemons;
+
+		} else { //Fallback for old system on localstorage
+			var myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || [];
+		} 
+		
 	} catch(e) {
 		var myPokemons = [];
 	} 
@@ -116,7 +122,16 @@ $(document).ready(function(){
 			selectedPokemons.push($pokemon.data('id'));
 		});
 		myPokemons = selectedPokemons;
-		localStorage.setItem('myPokemons', JSON.stringify(myPokemons));
+
+		if(userIsAuthenticated) {
+			$.post('/user/updatePokedex', {
+				pokemons: JSON.stringify(myPokemons)
+			});
+
+		} else {
+			localStorage.setItem('myPokemons', JSON.stringify(myPokemons));
+
+		}
 	}
 
 	updatePokemonCounter();

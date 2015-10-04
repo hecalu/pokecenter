@@ -41,5 +41,14 @@
       </footer>
     </div>
 
+    {{!-- Send user data (pokemons, boxes) to view --}}
+    {{#if user}}
+      <script>
+        var userIsAuthenticated = true;
+        var myDbPokemons        = {{{user.pokemons}}};
+        var myDbBoxes           = {{{user.boxes}}};
+      </script>
+    {{/if}}
+
   </body>
 </html>

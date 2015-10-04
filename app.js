@@ -18,6 +18,29 @@ var flash       = require('connect-flash');
 // Database ========================================================
 mongoose.connect(databaseConfig.mongoUrl);
 
+// When successfully connected
+mongoose.connection.on('connected', function () {  
+  console.log('Mongoose default connection open to ' + databaseConfig.mongoUrl);
+}); 
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {  
+  console.log('Mongoose default connection error: ' + err);
+}); 
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {  
+  console.log('Mongoose default connection disconnected'); 
+});
+
+// If the Node process ends, close the Mongoose connection 
+process.on('SIGINT', function() {  
+  mongoose.connection.close(function () { 
+    console.log('Mongoose default connection disconnected through app termination'); 
+    process.exit(0); 
+  }); 
+}); 
+
 // Configuration ===================================================
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.json()); // get information from html forms

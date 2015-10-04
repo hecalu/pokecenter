@@ -12,6 +12,7 @@ var passport = require('passport');
 router.get('/register', function(req, res){
   res.render('register', { 
     title: "Signup",
+    register_is_active: true, // Active corresponding item in menu
     message: req.flash('signupMessage')
   });
 });
@@ -33,6 +34,7 @@ router.post('/register', passport.authenticate('local-signup', {
 router.get('/login', function(req, res){
   res.render('login', { 
     title: "Login",
+    login_is_active: true, // Active corresponding item in menu
     message: req.flash('loginMessage')
   });
 });
@@ -47,25 +49,60 @@ router.post('/login', passport.authenticate('local-login', {
   failureFlash : true // allow flash messages
 }));
 
-
 /* GET logout current authenticated user */
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
 
-/* POST route to authenticate an user */
-router.post('/update', function(req, res) {
-  // Test user is well authenticated
-  if(req.user) {
+/**
+ * Update user boxes.
+ * POST AJAX request
+ */
+router.post('/updateBoxes', function(req, res, next) {
 
-    // Update user pokemons data
-    
-    // Return success response
-    res.json({
-      success: true
+  if(!req.user) {
+    res.json({ 
+      success: false,
+      message: "You're not authenticated. Please login."
     });
-  }  
+  } else {
+    // Update user's boxes and save it
+    req.user.boxes = req.body.boxes;
+    req.user.save(function(err) {
+      if (err) { throw err; }
+
+      res.json({ 
+        success: true,
+      });
+    });
+  }
 });
+
+/**
+ * Update user pokedex.
+ * POST AJAX request
+ */
+router.post('/updatePokedex', function(req, res, next) {
+
+  if(!req.user) {
+    res.json({ 
+      success: false,
+      message: "You're not authenticated. Please login."
+    });
+  } else {
+    // Update user's pokedex and save it
+    req.user.pokemons = req.body.pokemons;
+    req.user.save(function(err) {
+      if (err) { throw err; }
+
+      res.json({ 
+        success: true,
+      });
+    });
+  }
+});
+
+
 
 module.exports = router;

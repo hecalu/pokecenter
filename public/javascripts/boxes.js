@@ -29,7 +29,7 @@ $(document).ready(function(){
 	});
 
 	// Add a new box
-	$('.create-box').on('click', function(e){
+	$('.add-box-form').on('submit', function(e){
 		e.preventDefault();
 
 		var boxName = $('.new-pokebox-name').val();
@@ -39,7 +39,6 @@ $(document).ready(function(){
 			// Try to add box	
 			var newBox = new PokeBox(boxName, boxType);
 			if(myBoxes.addBox(newBox) != false) {
-				myBoxes.save(); // Save my boxes
 				self.addBox(newBox); // Build UI for new box
 				// Empty box name input
 				$('.new-pokebox-name').val('');
@@ -79,11 +78,11 @@ $(document).ready(function(){
 		      	self.addPokemon($pokemon, $slot);
 						box.addPokemon($pokemon.data('id'), $slot.data('slot-id'));
 						myBoxes.updateBox(box);
-						myBoxes.save();
 						$('[data-toggle="tooltip"]').tooltip();
 						if($(ui.draggable).parents('.pokebox').length > 0) {
 		      		self.removePokemon($(ui.draggable));
 		      	}
+						myBoxes.save();
 		      }
 		  });
 		});
@@ -133,16 +132,16 @@ $(document).ready(function(){
 		
 		// Make pokemon draggable
 		$pokemon.draggable({
-			revert:true,
+			revert: function(valid){
+				if (!valid) {
+					// Remove pokemon from slot when dropped outside
+					self.removePokemon($pokemon);
+					myBoxes.save();
+				}
+				return true;
+			},
       appendTo: "body"
 		});
-
-		// Remove pokemon from slot when double clicking on it
-		$pokemon.off('dblclick').on('dblclick', function(){
-			self.removePokemon($pokemon);
-			myBoxes.save(); // Update local boxes storage
-		});
-
 	}
 
 	/**
@@ -160,7 +159,6 @@ $(document).ready(function(){
 			originBox.removePokemon(originSlot);
 			// Then, update the changed box
 			myBoxes.updateBox(originBox);
-			myBoxes.save();
 		}
 		$slot.empty();
 	}

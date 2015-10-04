@@ -35,20 +35,23 @@
 		<ul class="nav navbar-nav navbar-right">
 			
 			{{#if user}}
-
 				{{!-- User connected --}}
+				<li>
+					<p class="navbar-text"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.local.email}}</p>
+				</li>
 				<li>
 					<a href="/user/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
 				</li>
 
 			{{else}}
+				{{!-- Guest/Anonymous --}}
 
-				<li>
+				<li {{#if register_is_active}}class="active"{{/if}}>
           <a href="/user/register">
-          	Register
+          	<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Register
           </a>
         </li>
-				<li>
+				<li {{#if login_is_active}}class="active"{{/if}}>
           <a href="/user/login">
           	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login
           </a>

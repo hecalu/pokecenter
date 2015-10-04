@@ -7,7 +7,13 @@ var PokeBoxes = function() {
 	this.load = function() {
 		var self = this;
 		try {
-			var myBoxes = JSON.parse(localStorage.getItem('myBoxes')) || [];
+			if(myDbBoxes) { // Try retrieve data from DB
+				var myBoxes = myDbBoxes;
+
+			} else { //Fallback for old system on localstorage
+				var myBoxes = JSON.parse(localStorage.getItem('myBoxes')) || [];
+			} 
+			
 			$.each(myBoxes, function(idx, myBox){
 				self.boxes.push(new PokeBox(myBox.name, myBox.type, myBox.pokemons));
 			});
@@ -17,11 +23,25 @@ var PokeBoxes = function() {
 	}
 	
 	/**
-	 * Save boxes to User local storage.
+	 * Save boxes to Database if user is logged otherwise save to localStorage.
 	 */
 	this.save = function() {
 		console.log(this.boxes);
-		localStorage.setItem('myBoxes', JSON.stringify(this.boxes));
+		if(userIsAuthenticated) {
+			$.post('/user/updateBoxes', {
+				boxes: JSON.stringify(this.boxes)
+			})
+			.done(function(data){
+				if(!data.success) {
+				}
+			});
+
+		} else {
+			localStorage.setItem('myBoxes', JSON.stringify(this.boxes));
+
+		}
+		
+		
 	}
 
 	/**
