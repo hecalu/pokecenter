@@ -1,64 +1,78 @@
 <nav id="menu" class="navbar navbar-default navbar-inverse navbar-fixed-top">
-	<div class="container">
+	<div class="container-fluid">
+		
+		{{!-- Mobile display --}}
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-collaspe" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
 
-		{{!-- Menu page list --}}
-		<ul class="nav navbar-nav">
-		  
-		  {{!-- Homepage / Pokedex --}}
-		  <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}>
-		  	<a href="/"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Pokedex</a>
-		  </li>
-		  
-			{{!-- Managing boxes page --}}
-		  <li role="presentation" {{#if boxes_is_active}}class="active"{{/if}}>
-		  	<a href="/boxes/"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Boxes</a>
-		  </li>
-		</ul>
-
-		{{!-- Pokemon name search --}}
-	 	<div class="navbar-form navbar-left" action="/pokemon/">
-		  <form class="form-group view-pokemon-details">
-		  	
-		  	{{!-- Redirect to wikipedia page according selected pokemon --}}
-		    <input type="search" list="pokemon-names" class="view-pokemon form-control" placeholder="Find by name">
-		    
-		    {{!-- All pokemon list --}}
-		    <datalist id="pokemon-names">
-		      {{#each pokedex}}
-		        <option data-pokemon-id="{{id}}" value="{{identifier}}">
-		      {{/each}}
-		    </datalist>
-
-		  </form>
-		</div>
-
-		<ul class="nav navbar-nav navbar-right">
+		{{!-- Desktop display --}}
+		<div class="collapse navbar-collapse" id="top-menu-collaspe">
 			
-			{{#if user}}
-				{{!-- User connected --}}
-				<li>
-					<p class="navbar-text"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.local.email}}</p>
-				</li>
-				<li>
-					<a href="/user/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
-				</li>
+			{{!-- Menu page list --}}
+			<ul class="nav navbar-nav">
+			  
+			  {{!-- Homepage / Pokedex --}}
+			  <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}>
+			  	<a href="/"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Pokedex</a>
+			  </li>
+			  
+				{{!-- Managing boxes page --}}
+			  <li role="presentation" {{#if boxes_is_active}}class="active"{{/if}}>
+			  	<a href="/boxes/"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Boxes</a>
+			  </li>
+			</ul>
 
-			{{else}}
-				{{!-- Guest/Anonymous --}}
+			{{!-- Pokemon name search --}}
+		 	<div class="navbar-form navbar-left" action="/pokemon/">
+			  <form class="form-group view-pokemon-details">
+			  	
+			  	{{!-- Redirect to wikipedia page according selected pokemon --}}
+			    <input type="search" list="pokemon-names" class="view-pokemon form-control" placeholder="Find by name">
+			    
+			    {{!-- All pokemon list --}}
+			    <datalist id="pokemon-names">
+			      {{#each pokedex}}
+			        <option data-pokemon-id="{{id}}" value="{{identifier}}">
+			      {{/each}}
+			    </datalist>
 
-				<li {{#if register_is_active}}class="active"{{/if}}>
-          <a href="/user/register">
-          	<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Register
-          </a>
-        </li>
-				<li {{#if login_is_active}}class="active"{{/if}}>
-          <a href="/user/login">
-          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login
-          </a>
-        </li>
+			  </form>
+			</div>
 
-			{{/if}}
-      </ul>
+			<ul class="nav navbar-nav navbar-right">
+				
+				{{#if user}}
+					{{!-- User connected --}}
+					<li>
+						<p class="navbar-text"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.local.email}}</p>
+					</li>
+					<li>
+						<a href="/user/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
+					</li>
+
+				{{else}}
+					{{!-- Guest/Anonymous --}}
+
+					<li {{#if register_is_active}}class="active"{{/if}}>
+	          <a href="/user/register">
+	          	<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Register
+	          </a>
+	        </li>
+					<li {{#if login_is_active}}class="active"{{/if}}>
+	          <a href="/user/login">
+	          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login
+	          </a>
+	        </li>
+
+				{{/if}}
+	      </ul>
+		</div>
 	</div>
 </nav>
 
