@@ -1,6 +1,6 @@
 module.exports = {
 
     'secret':   'ipreferunicornstopokemonsbutitisoursecret',
-    'mongoUrl': 'mongodb://localhost:27017/pokecenter'
+    'mongoUrl': process.env.PROD_MONGODB || 'mongodb://localhost:27017/pokecenter'
 
 };

@@ -2,6 +2,7 @@
 ###################
 node_modules
 data/db/
+.env
 
 # Compiled source #
 ###################
