@@ -41,3 +41,7 @@ data/db/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Compiled CSS #
+################
+public/stylesheets/*.css

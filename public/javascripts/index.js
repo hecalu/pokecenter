@@ -102,6 +102,7 @@ $(document).ready(function(){
 		var fourthGenPokemons = $('.pokemon.ui-selected.generation-4').length;
 		var fifthGenPokemons = $('.pokemon.ui-selected.generation-5').length;
 		var sixthGenPokemons = $('.pokemon.ui-selected.generation-6').length;
+		var seventhGenPokemons = $('.pokemon.ui-selected.generation-7').length;
 		$('.progress-bar.generation-1').css('width', firstGenPokemons / 151 * 100 + '%');
 		$('.generation-1-progression').text(firstGenPokemons + '/'+ 151);
 		$('.progress-bar.generation-2').css('width', $('.pokemon.ui-selected.generation-2').length / 100 * 100 + '%');
@@ -114,6 +115,8 @@ $(document).ready(function(){
 		$('.generation-5-progression').text(fifthGenPokemons + '/'+ 156);
 		$('.progress-bar.generation-6').css('width', $('.pokemon.ui-selected.generation-6').length / 70 * 100 + '%');
 		$('.generation-6-progression').text(sixthGenPokemons + '/'+ 70);
+		$('.progress-bar.generation-7').css('width', $('.pokemon.ui-selected.generation-7').length / 80 * 100 + '%');
+		$('.generation-7-progression').text(seventhGenPokemons + '/'+ 80);
 	}
 
 	var savePokedex = function() {

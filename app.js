@@ -76,12 +76,10 @@ app.use(function(req, res, next) {
 // Routes ==========================================================
 var indexRoutes     = require('./routes/index');
 var sessionRoutes   = require('./routes/session');
-var boxesRoutes     = require('./routes/boxes');
 var pokemonRoutes   = require('./routes/pokemon');
 
 app.use('/', indexRoutes);
 app.use('/user', sessionRoutes);
-app.use('/boxes', boxesRoutes);
 app.use('/pokemon', pokemonRoutes);
 
 // catch 404 and forward to error handler
