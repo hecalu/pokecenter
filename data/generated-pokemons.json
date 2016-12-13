@@ -7907,12 +7907,412 @@
         "id": 720,
         "identifier": "Hoopa",
         "species_id": 720,
-        "generation": null
+        "generation": 6
     },
     {
         "id": 721,
         "identifier": "Volcanion",
         "species_id": 721,
-        "generation": null
+        "generation": 6
+    },
+    {
+        "id": 722,
+        "identifier": "Brindibou",
+        "generation": 7
+    },
+    {
+        "id": 723,
+        "identifier": "Efflèche",
+        "generation": 7
+    },
+    {
+        "id": 724,
+        "identifier": "Archéduc",
+        "generation": 7
+    },
+    {
+        "id": 725,
+        "identifier": "Flamiaou",
+        "generation": 7
+    },
+    {
+        "id": 726,
+        "identifier": "Matoufeu",
+        "generation": 7
+    },
+    {
+        "id": 727,
+        "identifier": "Félinferno",
+        "generation": 7
+    },
+    {
+        "id": 728,
+        "identifier": "Otaquin",
+        "generation": 7
+    },
+    {
+        "id": 729,
+        "identifier": "Otarlette",
+        "generation": 7
+    },
+    {
+        "id": 730,
+        "identifier": "Oratoria",
+        "generation": 7
+    },
+    {
+        "id": 731,
+        "identifier": "Picassaut",
+        "generation": 7
+    },
+    {
+        "id": 732,
+        "identifier": "Piclairon",
+        "generation": 7
+    },
+    {
+        "id": 733,
+        "identifier": "Bazoucan",
+        "generation": 7
+    },
+    {
+        "id": 734,
+        "identifier": "Manglouton",
+        "generation": 7
+    },
+    {
+        "id": 735,
+        "identifier": "Argouste",
+        "generation": 7
+    },
+    {
+        "id": 736,
+        "identifier": "Larvibule",
+        "generation": 7
+    },
+    {
+        "id": 737,
+        "identifier": "Chrysapile",
+        "generation": 7
+    },
+    {
+        "id": 738,
+        "identifier": "Lucanon",
+        "generation": 7
+    },
+    {
+        "id": 739,
+        "identifier": "Crabagarre",
+        "generation": 7
+    },
+    {
+        "id": 740,
+        "identifier": "Crabominable",
+        "generation": 7
+    },
+    {
+        "id": 741,
+        "identifier": "Plumeline",
+        "generation": 7
+    },
+    {
+        "id": 742,
+        "identifier": "Bombydou",
+        "generation": 7
+    },
+    {
+        "id": 743,
+        "identifier": "Rubombelle",
+        "generation": 7
+    },
+    {
+        "id": 744,
+        "identifier": "Rocabot",
+        "generation": 7
+    },
+    {
+        "id": 745,
+        "identifier": "Lougaroc",
+        "generation": 7
+    },
+    {
+        "id": 746,
+        "identifier": "Froussardine",
+        "generation": 7
+    },
+    {
+        "id": 747,
+        "identifier": "Vorastérie",
+        "generation": 7
+    },
+    {
+        "id": 748,
+        "identifier": "Prédastérie",
+        "generation": 7
+    },
+    {
+        "id": 749,
+        "identifier": "Tiboudet",
+        "generation": 7
+    },
+    {
+        "id": 750,
+        "identifier": "Bourrinos",
+        "generation": 7
+    },
+    {
+        "id": 751,
+        "identifier": "Araqua",
+        "generation": 7
+    },
+    {
+        "id": 752,
+        "identifier": "Tarenbulle",
+        "generation": 7
+    },
+    {
+        "id": 753,
+        "identifier": "Mimantis",
+        "generation": 7
+    },
+    {
+        "id": 754,
+        "identifier": "Floramantis",
+        "generation": 7
+    },
+    {
+        "id": 755,
+        "identifier": "Spododo",
+        "generation": 7
+    },
+    {
+        "id": 756,
+        "identifier": "Lampignon",
+        "generation": 7
+    },
+    {
+        "id": 757,
+        "identifier": "Tritox",
+        "generation": 7
+    },
+    {
+        "id": 758,
+        "identifier": "Malamandre",
+        "generation": 7
+    },
+    {
+        "id": 759,
+        "identifier": "Nounourson",
+        "generation": 7
+    },
+    {
+        "id": 760,
+        "identifier": "Chelours",
+        "generation": 7
+    },
+    {
+        "id": 761,
+        "identifier": "Croquine",
+        "generation": 7
+    },
+    {
+        "id": 762,
+        "identifier": "Candine",
+        "generation": 7
+    },
+    {
+        "id": 763,
+        "identifier": "Sucreine",
+        "generation": 7
+    },
+    {
+        "id": 764,
+        "identifier": "Guérilande",
+        "generation": 7
+    },
+    {
+        "id": 765,
+        "identifier": "Gouroutan",
+        "generation": 7
+    },
+    {
+        "id": 766,
+        "identifier": "Quartermac",
+        "generation": 7
+    },
+    {
+        "id": 767,
+        "identifier": "Sovkipou",
+        "generation": 7
+    },
+    {
+        "id": 768,
+        "identifier": "Sarmuraï",
+        "generation": 7
+    },
+    {
+        "id": 769,
+        "identifier": "Bacabouh",
+        "generation": 7
+    },
+    {
+        "id": 770,
+        "identifier": "Trépassable",
+        "generation": 7
+    },
+    {
+        "id": 771,
+        "identifier": "Concombaffe",
+        "generation": 7
+    },
+    {
+        "id": 772,
+        "identifier": "Type:0",
+        "generation": 7
+    },
+    {
+        "id": 773,
+        "identifier": "Silvallié",
+        "generation": 7
+    },
+    {
+        "id": 774,
+        "identifier": "Météno",
+        "generation": 7
+    },
+    {
+        "id": 775,
+        "identifier": "Dodoala",
+        "generation": 7
+    },
+    {
+        "id": 776,
+        "identifier": "Boumata",
+        "generation": 7
+    },
+    {
+        "id": 777,
+        "identifier": "Togedemaru",
+        "generation": 7
+    },
+    {
+        "id": 778,
+        "identifier": "Mimiqui",
+        "generation": 7
+    },
+    {
+        "id": 779,
+        "identifier": "Denticrisse",
+        "generation": 7
+    },
+    {
+        "id": 780,
+        "identifier": "Draïeul",
+        "generation": 7
+    },
+    {
+        "id": 781,
+        "identifier": "Sinistrail",
+        "generation": 7
+    },
+    {
+        "id": 782,
+        "identifier": "Bébécaille",
+        "generation": 7
+    },
+    {
+        "id": 783,
+        "identifier": "Écaïd",
+        "generation": 7
+    },
+    {
+        "id": 784,
+        "identifier": "Ékaïser",
+        "generation": 7
+    },
+    {
+        "id": 785,
+        "identifier": "Tokorico",
+        "generation": 7
+    },
+    {
+        "id": 786,
+        "identifier": "Tokopiyon",
+        "generation": 7
+    },
+    {
+        "id": 787,
+        "identifier": "Tokotoro",
+        "generation": 7
+    },
+    {
+        "id": 788,
+        "identifier": "Tokopisco",
+        "generation": 7
+    },
+    {
+        "id": 789,
+        "identifier": "Cosmog",
+        "generation": 7
+    },
+    {
+        "id": 790,
+        "identifier": "Cosmovum",
+        "generation": 7
+    },
+    {
+        "id": 791,
+        "identifier": "Solgaleo",
+        "generation": 7
+    },
+    {
+        "id": 792,
+        "identifier": "Lunala",
+        "generation": 7
+    },
+    {
+        "id": 793,
+        "identifier": "Zéroïd",
+        "generation": 7
+    },
+    {
+        "id": 794,
+        "identifier": "Mouscoto",
+        "generation": 7
+    },
+    {
+        "id": 795,
+        "identifier": "Cancrelove",
+        "generation": 7
+    },
+    {
+        "id": 796,
+        "identifier": "Câblifère",
+        "generation": 7
+    },
+    {
+        "id": 797,
+        "identifier": "Bamboiselle",
+        "generation": 7
+    },
+    {
+        "id": 798,
+        "identifier": "Katagami",
+        "generation": 7
+    },
+    {
+        "id": 799,
+        "identifier": "Engloutyran",
+        "generation": 7
+    },
+    {
+        "id": 800,
+        "identifier": "Necrozma",
+        "generation": 7
+    },
+    {
+        "id": 801,
+        "identifier": "Magearna",
+        "generation": 7
     }
 ]

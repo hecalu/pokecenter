@@ -11,7 +11,7 @@ function pad(num, size) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  var nbPokemonsInRow = 38;
+  var nbPokemonsInRow = 16;
   pokemons.forEach(function(pokemon){
     pokemon.padId = pad(pokemon.id, 3);
     pokemon.backgroundPosition = '-'+((pokemon.id-1)%nbPokemonsInRow*40)+'px -'+(Math.floor((pokemon.id-1)/nbPokemonsInRow)*30)+'px';
