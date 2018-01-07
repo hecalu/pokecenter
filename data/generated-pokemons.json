@@ -8314,5 +8314,30 @@
         "id": 801,
         "identifier": "Magearna",
         "generation": 7
+    },
+    {
+        "id": 802,
+        "identifier": "Marshadow",
+        "generation": 7
+    },
+    {
+        "id": 803,
+        "identifier": "Vémini",
+        "generation": 7
+    },
+    {
+        "id": 804,
+        "identifier": "Mandrillon",
+        "generation": 7
+    },
+    {
+        "id": 805,
+        "identifier": "Ama-Ama",
+        "generation": 7
+    },
+    {
+        "id": 806,
+        "identifier": "Pierroteknik",
+        "generation": 7
     }
 ]
