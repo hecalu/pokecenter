@@ -6,6 +6,15 @@ $(document).ready(function(){
 		//$('.filters').stop().animate({'top': $(this).scrollTop() + filtersOriginalTopPosition + "px"}, 250);
 	});
 
+	var mode = "capture";
+	
+	// Shiny tracking params
+	var encounters = 0;
+	var shinyCharm = true;
+	var encounterMethod = "random";
+	var trackingGeneration = 7;
+
+
 	var $pokedex = $('.pokedex');
 	try {
 		if(userIsAuthenticated) { // Try retrieve data from DB
@@ -26,13 +35,14 @@ $(document).ready(function(){
 		$pokedex.selectable('refresh');
 	});
 
+
 	/**
 	 * Multi selector
 	 */
 	var $currentlySelected = null;
 	var selected = [];
-	// Make pokemons selectable
 	
+	// Make pokemons selectable
 	$pokedex.bind('mousedown', function(e){
 		e.metaKey = true;
 
@@ -64,6 +74,21 @@ $(document).ready(function(){
     }
 	});
 	
+
+	function setCaptureMode() {
+		console.log('capture mode');
+		$pokedex.selectable( "option", "disabled", false );
+		$('.capture-progression').removeClass('hide');
+		$('.shiny-tracking').addClass('hide');
+	}
+	
+	function setShinyTrackingMode() {
+		console.log('shiny-tracking mode');
+		$pokedex.selectable( "option", "disabled", true );
+		$('.capture-progression').addClass('hide');
+		$('.shiny-tracking').removeClass('hide');
+	}
+
 
 	if(myPokemons.length > 0) {
 		$.map($('.pokemon'), function(pokemon){
@@ -165,4 +190,190 @@ $(document).ready(function(){
 			filter: filterValue
 		});
 	});
+
+	/* EVENTS */
+
+	// Select a pokemon
+	$('.pokemon').on('click', function(){
+		console.log('Pokemon selected: '+ $(this).data('name'));
+		$(document).trigger('pokemon-selected', $(this).data('id'));
+	});
+
+	// When selecting a pokemon
+	
+	$(document).on('pokemon-selected', function(e, pokemonID){
+		if(mode == "shiny-tracking") {
+			$('.pokemon-tracked').html('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/'+pokemonID+'.png"/>');
+			console.log(pokemonID);
+		}
+	});
+
+	// Change mode
+	$(".modes :input").change(function() {
+    mode = $(this).data('mode');
+    $(document).trigger('mode-changed');
+	});
+
+	// Mode changed
+	$(document).on('mode-changed', function(){
+		if(mode == 'capture') {
+			setCaptureMode();
+		}
+		else {
+			setShinyTrackingMode();
+    	$(document).trigger('shiny-params-changed');
+		}
+	});
+
+	// Tracking generation changed
+	$(".tracking-generation :input").change(function() {
+    trackingGeneration = $(this).data('generation');
+		console.log('Tracking Generation: '+trackingGeneration);
+
+		// Hide shinyCharm field according selected generation
+		if(trackingGeneration <= 4) {
+			$('.shiny-charm').hide();
+		} else {
+			$('.shiny-charm').show();
+		}
+
+    $(document).trigger('shiny-params-changed');
+	});
+
+	// Update Encounter Method
+	$('select.encounter-method').change(function() {
+		encounterMethod = $(this).find("option:selected").val();
+		console.log('Encounter Method: '+encounterMethod);
+    $(document).trigger('shiny-params-changed');
+	});
+
+	// Update Shiny Charm
+	$('.shiny-charm :input').change(function() {
+		shinyCharm = $(this).data('shiny-charm');
+		console.log('Shiny charm: '+shinyCharm);
+    $(document).trigger('shiny-params-changed');
+	});
+
+	// Update encounters
+	$(".encounters-tracking button").on('click', function() {
+    encounters = ($(this).data('encounters') == 'dec') ? Math.max(encounters-1,0) : encounters+1;
+    $(document).trigger('shiny-params-changed');
+	});
+
+	// Reset encounters
+	$('.reset-encounters').on('click', function(e) {
+		e.preventDefault();
+		encounters = 0;
+    $(document).trigger('shiny-params-changed');
+	});
+
+	// Update Shiny Params : Compute all values again
+	$(document).on('shiny-params-changed', function(){
+		var odds = computeOdds();
+		$('.shiny-tracking .encounters').text(encounters);
+		$('.shiny-tracking .probability').text(odds.toFraction());
+		$('.shiny-tracking .binomial').text(binomialDistributionPercentage(odds.valueOf()));
+		$('.shiny-tracking .remaining-encounters').text(remainingEncounters(odds.valueOf()));
+	});
+
+	function computeOdds() {
+    var odds = 8192;
+
+    // Random Encounters and Soft Resets
+    if (trackingGeneration === 6 || trackingGeneration === 7) {
+      odds = 4096;
+    }
+    if (shinyCharm === true && trackingGeneration === 5) {
+      odds = 2731;
+    }
+    if (shinyCharm === true && (trackingGeneration === 6 || trackingGeneration === 7)) {
+      odds = 1365;
+    }
+
+    // Masuda Method
+    if (encounterMethod === "masuda") {
+      if (trackingGeneration === 4) {
+        odds = 1638;
+      }
+      if (trackingGeneration === 5) {
+        if (shinyCharm === true) {
+          odds = 1024;
+        } else {
+          odds = 1365;
+        }
+      }
+      if (trackingGeneration === 6 || trackingGeneration === 7) {
+        if (shinyCharm === true) {
+          odds = 512;
+        } else {
+          odds = 683;
+        }
+      }
+    }
+
+    // Friend Safari
+    if (encounterMethod === "safari") {
+      odds = 512;
+    }
+
+    // Dex Nav -- unsure of the legitimacy of this
+    if (encounterMethod === "dex_nav") {
+      odds = 512;
+    }
+
+    // Radar chaining
+    // Chain fishing is speculated to be the same
+    if (encounterMethod === "radar" || encounterMethod === "fishing") {
+      // Values for the formula:
+      // Math.ceil(65535 / (8200 - nc * 200)) / 65536
+      // where nc = number in the chain, up to 40
+
+      var nc = encounters;
+      if (nc < 0) {
+        nc = 0;
+      }
+      if (nc > 40) {
+        nc = 40;
+      }
+      var f = new Fraction(Math.ceil(65535 / (8200 - nc * 200)) / 65536);
+      odds = Math.ceil(f.d/f.n);
+
+      if (trackingGeneration === 6) {
+        odds = odds/2;
+      }
+
+      if (shinyCharm === true) {
+        f = new Fraction(3, odds);
+        odds = Math.ceil(f.d/f.n);
+      }
+    }
+
+    // S.O.S Battles
+    if (encounterMethod === "sos") {
+      var chained_encounter = encounters % 256;
+      if (chained_encounter  >= 70) {
+        if (shinyCharm === true) {
+          odds = 683;
+        } else {
+          odds = 1024;
+        }
+      }
+    }
+    return new Fraction(1, Math.ceil(odds));
+  }
+
+
+  function binomialDistributionPercentage(oddsValue) {
+    var p = oddsValue;
+    var n = encounters;
+    var p_to_n = Math.pow((1.0 - p), n);
+    return (p_to_n * (Math.pow((-(1.0/(p-1.0))), n)) - p_to_n) * 100.0;
+  }
+
+  function remainingEncounters(oddsValue) {
+    var p = oddsValue;
+    var n = Math.ceil(Math.log(0.1) / Math.log(1-p));
+    return n - encounters;
+  }
+
 });

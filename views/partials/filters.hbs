@@ -3,95 +3,176 @@
   
   <hr>
   
-  <h4>
-    Progression 
-    <small>
-      <a class="reset-pokedex pull-right" href="#">
-        <span class="glyphicon glyphicon-trash"></span> Reset
-      </a>
-    </small>
-  </h4>
+  <h4>Mode</h4>
+  <div class="row">
+    <div class="btn-group-vertical modes col-md-12" data-toggle="buttons">
+      <label class="btn btn-default active col-md-6">
+        <input type="radio" data-mode="capture"><img src="http://localhost:3000/images/pokeball.png"/> Capture
+      </label>
+      <label class="btn btn-default col-md-6">
+        <input type="radio" data-mode="shiny-tracking"><span class="glyphicon glyphicon-star"></span> Shiny tracking
+      </label>
+    </div>
+  </div>
 
-  <ul class="nav nav-pills nav-stacked">
-    <li>
-      <a href="#pokedex-pokemon-1">
-        <span class="pull-right">
-          <span class="generation-1-progression"></span>
-        </span>
-        Gen #1
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-1" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
+  <hr>
+  
+  <div class="capture-progression">
+    <h4>
+      Progression 
+      <small>
+        <a class="reset-pokedex pull-right" href="#">
+          <span class="glyphicon glyphicon-trash"></span> Reset
+        </a>
+      </small>
+    </h4>
 
-    <li>
-      <a href="#pokedex-pokemon-152">
-        <span class="pull-right">
-          <span class="generation-2-progression"></span>
-        </span>
-        Gen #2
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-2" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#pokedex-pokemon-252">
-        <span class="pull-right">
-          <span class="generation-3-progression"></span>
-        </span>
-        Gen #3
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-3" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#pokedex-pokemon-387">
-        <span class="pull-right">
-          <span class="generation-4-progression"></span>
-        </span>
-        Gen #4
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-4" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#pokedex-pokemon-494">
-        <span class="pull-right">
-          <span class="generation-5-progression"></span>
-        </span>
-        Gen #5
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-5" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#pokedex-pokemon-650">
-        <span class="pull-right">
-          <span class="generation-6-progression"></span>
-        </span>
-        Gen #6
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-6" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href="#pokedex-pokemon-722">
-        <span class="pull-right">
-          <span class="generation-7-progression"></span>
-        </span>
-        Gen #7
-        <div class="progress generation-progress">
-          <div class="progress-bar generation-7" role="progressbar" style="width: 60%;"></div>
-        </div>
-      </a>
-    </li>
-  </ul>
+    <ul class="nav nav-pills nav-stacked">
+      <li>
+        <a href="#pokedex-pokemon-1">
+          <span class="pull-right">
+            <span class="generation-1-progression"></span>
+          </span>
+          Gen #1
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-1" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+
+      <li>
+        <a href="#pokedex-pokemon-152">
+          <span class="pull-right">
+            <span class="generation-2-progression"></span>
+          </span>
+          Gen #2
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-2" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#pokedex-pokemon-252">
+          <span class="pull-right">
+            <span class="generation-3-progression"></span>
+          </span>
+          Gen #3
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-3" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#pokedex-pokemon-387">
+          <span class="pull-right">
+            <span class="generation-4-progression"></span>
+          </span>
+          Gen #4
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-4" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#pokedex-pokemon-494">
+          <span class="pull-right">
+            <span class="generation-5-progression"></span>
+          </span>
+          Gen #5
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-5" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#pokedex-pokemon-650">
+          <span class="pull-right">
+            <span class="generation-6-progression"></span>
+          </span>
+          Gen #6
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-6" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#pokedex-pokemon-722">
+          <span class="pull-right">
+            <span class="generation-7-progression"></span>
+          </span>
+          Gen #7
+          <div class="progress generation-progress">
+            <div class="progress-bar generation-7" role="progressbar" style="width: 60%;"></div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Shiny Tracking -->
+  <div class="shiny-tracking hide">
+    <h4>Shiny tracking
+      <small>
+        <a class="reset-encounters pull-right" href="#">
+          <span class="glyphicon glyphicon-retweet"></span> Reset
+        </a>
+      </small>
+    </h4>
+
+    <div class="form-group">
+      <label>Generation</label>
+      <div class="btn-group tracking-generation" data-toggle="buttons">
+        <label class="btn btn-default"><input type="radio" data-generation=2> 2</label>
+        <label class="btn btn-default"><input type="radio" data-generation=3> 3</label>
+        <label class="btn btn-default"><input type="radio" data-generation=4> 4</label>
+        <label class="btn btn-default"><input type="radio" data-generation=5> 5</label>
+        <label class="btn btn-default"><input type="radio" data-generation=6> 6</label>
+        <label class="btn btn-default active"><input type="radio" data-generation=7> 7</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Encounter Method</label>
+      <select class="form-control encounter-method">
+        <option value="random">Random/SR</option>
+        <option value="masuda">Masuda Method</option>
+        <option value="dex_nav">Dex Nav</option>
+        <option value="safari">Friend Safari</option>
+        <option value="radar">Radar Chaining</option>
+        <option value="fishing">Fishing</option>
+        <option value="sos">S.O.S Battles</option>
+      </select>
+    </div>
+
+    <div class="form-group shiny-charm">
+      <label>Shiny charm</label>
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" data-shiny-charm=true >Yes
+        </label>
+        <label class="btn btn-default">
+          <input type="radio" data-shiny-charm=false> No
+        </label>
+      </div>
+    </div>
+
+    <div class="pokemon-tracked"></div>
+    <div class="encounters text-center">0</div>
+    
+    <div class="form-group row">
+      <div class="btn-group encounters-tracking col-md-12">
+        <button type="button" data-encounters="dec" class="btn btn-danger col-md-6">-</button>
+        <button type="button" data-encounters="inc" class="btn btn-success col-md-6">+</button>
+      </div>
+    </div>
+
+    <div class="well">
+      <p>Probability : <span class="probability"></span></p>
+      <p>Binomial : <span class="binomial"></span>%</p>
+      <p>Until 90% : <span class="remaining-encounters"></span></p>
+    </div>
+
+  </div>
   
   <hr>
 
@@ -105,13 +186,13 @@
   <!-- Filters radio -->
   <div class="btn-group pokemon-filters" data-toggle="buttons">
     <label class="btn btn-default active" data-filter="*">
-      <input type="radio" name="options"> All
+      <input type="radio"> All
     </label>
     <label class="btn btn-default" data-filter=".ui-selected" >
-      <input type="radio" name="options"> Caught
+      <input type="radio"> Caught
     </label>
     <label class="btn btn-default" data-filter=":not(.ui-selected)">
-      <input type="radio" name="options"> Remaining
+      <input type="radio"> Remaining
     </label>
   </div>
 </aside>
