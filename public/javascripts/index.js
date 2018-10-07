@@ -259,6 +259,11 @@ $(document).ready(function(){
     encounters = ($(this).data('encounters') == 'dec') ? Math.max(encounters-1,0) : encounters+1;
     $(document).trigger('shiny-params-changed');
 	});
+	
+	$(".encounters").on('input', function() {
+		encounters = parseInt($('.encounters').val());
+    $(document).trigger('shiny-params-changed');
+	});
 
 	// Reset encounters
 	$('.reset-encounters').on('click', function(e) {
@@ -270,7 +275,7 @@ $(document).ready(function(){
 	// Update Shiny Params : Compute all values again
 	$(document).on('shiny-params-changed', function(){
 		var odds = computeOdds();
-		$('.shiny-tracking .encounters').text(encounters);
+		$('.shiny-tracking .encounters').val(encounters);
 		$('.shiny-tracking .probability').text(odds.toFraction());
 		$('.shiny-tracking .binomial').text(binomialDistributionPercentage(odds.valueOf()));
 		$('.shiny-tracking .remaining-encounters').text(remainingEncounters(odds.valueOf()));
