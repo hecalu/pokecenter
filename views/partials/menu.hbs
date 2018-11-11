@@ -24,23 +24,6 @@
 			  
 			</ul>
 
-			{{!-- Pokemon name search --}}
-		 	<div class="navbar-form navbar-left" action="/pokemon/">
-			  <form class="form-group view-pokemon-details">
-			  	
-			  	{{!-- Redirect to wikipedia page according selected pokemon --}}
-			    <input type="search" list="pokemon-names" class="view-pokemon form-control" placeholder="Find by name">
-			    
-			    {{!-- All pokemon list --}}
-			    <datalist id="pokemon-names">
-			      {{#each pokedex}}
-			        <option data-pokemon-id="{{id}}" value="{{identifier}}">
-			      {{/each}}
-			    </datalist>
-
-			  </form>
-			</div>
-
 			<ul class="nav navbar-nav navbar-right">
 				
 				{{#if user}}
