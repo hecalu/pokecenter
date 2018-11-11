@@ -63,12 +63,12 @@ module.exports = function(passport) {
           newUser.local.email    = email;
           newUser.local.password = password;
 
-          // Store existing user data about its pokemons or boxes
+          // Store existing user data about its pokemons or shinies
           if (req.body.myPokemons) {
             newUser.pokemons = req.body.myPokemons;
           }
-          if (req.body.myBoxes) {
-            newUser.boxes = req.body.myBoxes;
+          if (req.body.myShinies) {
+            newUser.shinies = req.body.myShinies;
           }
 
           // save the user

@@ -55,29 +55,6 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-/**
- * Update user boxes.
- * POST AJAX request
- */
-router.post('/updateBoxes', function(req, res, next) {
-
-  if(!req.user) {
-    res.json({ 
-      success: false,
-      message: "You're not authenticated. Please login."
-    });
-  } else {
-    // Update user's boxes and save it
-    req.user.boxes = req.body.boxes;
-    req.user.save(function(err) {
-      if (err) { throw err; }
-
-      res.json({ 
-        success: true,
-      });
-    });
-  }
-});
 
 /**
  * Update user pokedex.
@@ -93,6 +70,8 @@ router.post('/updatePokedex', function(req, res, next) {
   } else {
     // Update user's pokedex and save it
     req.user.pokemons = req.body.pokemons;
+    req.user.shinies = req.body.shinies;
+    console.log(req.user);
     req.user.save(function(err) {
       if (err) { throw err; }
 

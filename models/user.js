@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
       password: String,
     }, 
     pokemons: [],
-    boxes: []
+    shinies: []
 });
 
 // create the model for users and expose it to our app

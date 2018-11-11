@@ -13,19 +13,23 @@ $(document).ready(function(){
 	var shinyCharm = true;
 	var encounterMethod = "random";
 	var trackingGeneration = 7;
+  var selectedPokemonID = null;
 
 
 	var $pokedex = $('.pokedex');
 	try {
 		if(userIsAuthenticated) { // Try retrieve data from DB
-			var myPokemons = myDbPokemons;
+      var myPokemons = myDbPokemons;
+      var myShinies = myDbShinies;
 
 		} else { //Fallback for old system on localstorage
-			var myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || [];
+      var myPokemons = JSON.parse(localStorage.getItem('myPokemons')) || [];
+      var myShinies = JSON.parse(localStorage.getItem('myShinies')) || [];
 		} 
 		
 	} catch(e) {
-		var myPokemons = [];
+    var myPokemons = [];
+    var myShinies = [];
 	} 
 
 	$pokedex.isotope({
@@ -80,6 +84,8 @@ $(document).ready(function(){
 		$pokedex.selectable( "option", "disabled", false );
 		$('.capture-progression').removeClass('hide');
 		$('.shiny-tracking').addClass('hide');
+    $('.pokedex').removeClass('theme-shiny');
+    $('.pokedex').addClass('theme-capture');
 	}
 	
 	function setShinyTrackingMode() {
@@ -87,14 +93,19 @@ $(document).ready(function(){
 		$pokedex.selectable( "option", "disabled", true );
 		$('.capture-progression').addClass('hide');
 		$('.shiny-tracking').removeClass('hide');
+    $('.pokedex').addClass('theme-shiny');
+    $('.pokedex').removeClass('theme-capture');
 	}
 
 
-	if(myPokemons.length > 0) {
+	if(myPokemons.length > 0 || myShinies.length) {
 		$.map($('.pokemon'), function(pokemon){
-			if($.inArray($(pokemon).data('id'), myPokemons) > -1) {
-				$(pokemon).addClass('ui-selected');
-			}
+      if($.inArray($(pokemon).data('id'), myPokemons) > -1) {
+        $(pokemon).addClass('ui-selected');
+      }
+      if($.inArray($(pokemon).data('id'), myShinies) > -1) {
+        $(pokemon).addClass('shiny');
+      }
 		});
 	}
 
@@ -106,7 +117,8 @@ $(document).ready(function(){
 		if(confirm('Are you sure you want to reset your pokedex ? You will lose all your progression !')) {
 			if(confirm('Are you REALLY sure to do that ?')) {
 				$('.ui-selected').removeClass('ui-selected');
-				myPokemons = [];
+        myPokemons = [];
+        myShinies = [];
 				updatePokemonCounter();
 				savePokedex();
 			}
@@ -154,11 +166,13 @@ $(document).ready(function(){
 
 		if(userIsAuthenticated) {
 			$.post('/user/updatePokedex', {
-				pokemons: JSON.stringify(myPokemons)
+        pokemons: JSON.stringify(myPokemons),
+        shinies: JSON.stringify(myShinies)
 			});
 
 		} else {
-			localStorage.setItem('myPokemons', JSON.stringify(myPokemons));
+      localStorage.setItem('myPokemons', JSON.stringify(myPokemons));
+      localStorage.setItem('myShinies', JSON.stringify(myShinies));
 
 		}
 	}
@@ -200,11 +214,21 @@ $(document).ready(function(){
 	});
 
 	// When selecting a pokemon
-	
 	$(document).on('pokemon-selected', function(e, pokemonID){
 		if(mode == "shiny-tracking") {
 			$('.pokemon-tracked').html('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/'+pokemonID+'.png"/>');
 			console.log(pokemonID);
+      selectedPokemonID = pokemonID;
+      if(myShinies.indexOf(selectedPokemonID) === -1) {
+        // Shiny not captured
+        $('.btn.caught-shiny').removeClass('hide');
+        $('.btn.remove-shiny').addClass('hide');
+
+      } else {
+        // Shiny already captured
+        $('.btn.remove-shiny').removeClass('hide');
+        $('.btn.caught-shiny').addClass('hide');
+      }
 		}
 	});
 
@@ -224,6 +248,29 @@ $(document).ready(function(){
     	$(document).trigger('shiny-params-changed');
 		}
 	});
+
+  // Capture a shiny
+  $(".caught-shiny").click(function() {
+    if(selectedPokemonID != null) {
+      if (myShinies.indexOf(selectedPokemonID) === -1) myShinies.push(selectedPokemonID); // Prevents duplicates
+      $('#pokedex-pokemon-'+selectedPokemonID).addClass('shiny');
+      console.log("My Shinies :", myShinies);
+      savePokedex();
+    }
+  });
+
+  // Remove a shiny
+  $(".remove-shiny").click(function() {
+    if(selectedPokemonID != null) {
+      var index = myShinies.indexOf(selectedPokemonID);
+      if (index > -1) {
+        myShinies.splice(index, 1);
+      }
+      $('#pokedex-pokemon-'+selectedPokemonID).removeClass('shiny');
+      console.log("My Shinies :", myShinies);
+      savePokedex();
+    }
+  });
 
 	// Tracking generation changed
 	$(".tracking-generation :input").change(function() {

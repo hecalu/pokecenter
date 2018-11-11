@@ -1,0 +1,76 @@
+<!-- Shiny Tracking -->
+<div class="shiny-tracking hide">
+  <h4>Shiny tracking
+    <small>
+      <a class="reset-encounters pull-right" href="#">
+        <span class="glyphicon glyphicon-retweet"></span> Reset
+      </a>
+    </small>
+  </h4>
+
+  <!-- Generation selection -->
+  <div class="form-group">
+    <label>Generation</label>
+    <div class="btn-group tracking-generation" data-toggle="buttons">
+      <label class="btn btn-default"><input type="radio" data-generation=2> 2</label>
+      <label class="btn btn-default"><input type="radio" data-generation=3> 3</label>
+      <label class="btn btn-default"><input type="radio" data-generation=4> 4</label>
+      <label class="btn btn-default"><input type="radio" data-generation=5> 5</label>
+      <label class="btn btn-default"><input type="radio" data-generation=6> 6</label>
+      <label class="btn btn-default active"><input type="radio" data-generation=7> 7</label>
+    </div>
+  </div>
+
+  <!-- Encounter method -->
+  <div class="form-group">
+    <label>Encounter Method</label>
+    <select class="form-control encounter-method">
+      <option value="random">Random/SR</option>
+      <option value="masuda">Masuda Method</option>
+      <option value="dex_nav">Dex Nav</option>
+      <option value="safari">Friend Safari</option>
+      <option value="radar">Radar Chaining</option>
+      <option value="fishing">Fishing</option>
+      <option value="sos">S.O.S Battles</option>
+    </select>
+  </div>
+
+  <!-- Shiny charm -->
+  <div class="form-group shiny-charm">
+    <label>Shiny charm</label>
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-default active">
+        <input type="radio" data-shiny-charm=true >Yes
+      </label>
+      <label class="btn btn-default">
+        <input type="radio" data-shiny-charm=false> No
+      </label>
+    </div>
+  </div>
+
+  <!-- Pokemon tracked -->
+  <div class="pokemon-tracked"></div>
+  
+  <!-- Encounter tracking -->
+  <input type="number" step="1" value="0" min="0" class="encounters col-md-12 col-xs-12"/>
+  <div class="form-group row">
+    <div class="btn-group encounters-tracking col-md-12 col-xs-12">
+      <button type="button" data-encounters="dec" class="btn btn-danger col-md-6 col-xs-6"><span class="glyphicon glyphicon-minus"></span></button>
+      <button type="button" data-encounters="inc" class="btn btn-success col-md-6 col-xs-6"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="btn col-md-12 col-xs-12">
+      <button type="button" class="btn hide caught-shiny btn-primary col-md-12 col-xs-12"><span class="glyphicon glyphicon-star"></span> Caught !</button>
+      <button type="button" class="btn hide remove-shiny btn-warning col-md-12 col-xs-12"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+    </div>
+  </div>
+
+  <!-- Probabilities -->
+  <div class="well">
+    <p>Probability : <span class="probability"></span></p>
+    <p>Binomial : <span class="binomial"></span>%</p>
+    <p>Until 90% : <span class="remaining-encounters"></span></p>
+  </div>
+
+</div>
