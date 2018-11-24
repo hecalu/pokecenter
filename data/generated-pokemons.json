@@ -8344,5 +8344,119 @@
         "id": 807,
         "identifier": "Zeraora",
         "generation": 7
-    }
+    },
+    {
+        "id": "19a",
+        "identifier": "Rattata",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "20a",
+        "identifier": "Rattatac",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "26a",
+        "identifier": "Raichu",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "27a",
+        "identifier": "Sabelette",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "28a",
+        "identifier": "Sablaireau",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "37a",
+        "identifier": "Goupix",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "38a",
+        "identifier": "Feunard",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "50a",
+        "identifier": "Taupiqueur",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "51a",
+        "identifier": "Triopikeur",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "52a",
+        "identifier": "Miaouss",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "53a",
+        "identifier": "Persian",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "74a",
+        "identifier": "Racaillou",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "74a",
+        "identifier": "Racaillou",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "75a",
+        "identifier": "Gravalanch",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "76a",
+        "identifier": "Grolem",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "88a",
+        "identifier": "Tadmorv",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "89a",
+        "identifier": "Grotadmorv",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "103a",
+        "identifier": "Noadkoko",
+        "generation": 7,
+        "form": "alola"
+    },
+    {
+        "id": "105a",
+        "identifier": "Ossatueur",
+        "generation": 7,
+        "form": "alola"
+    }    
 ]

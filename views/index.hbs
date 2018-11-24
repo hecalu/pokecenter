@@ -7,7 +7,7 @@
 <section class="pokedex theme-capture col-md-10 col-sd-12">
 	{{#each pokedex}}
 		<div data-id="{{id}}" id="pokedex-pokemon-{{id}}" data-toggle="tooltip" title="{{identifier}} - Generation #{{generation}}" data-name="{{identifier}}" class="pokemon generation-{{generation}}">
-      <div class="pokemon-image pki n{{id}}"></div>
+      <div class="pokemon-image pki n{{id}} {{#if form}}form-{{form}}{{/if}}"></div>
 			<div class="pokemon-capture"></div>
       <div class="pokemon-id">{{padId}}</div>
 		</div>

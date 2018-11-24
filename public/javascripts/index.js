@@ -133,27 +133,36 @@ $(document).ready(function(){
 		}
 
 		// Update generation progression counters
-		var firstGenPokemons = $('.pokemon.ui-selected.generation-1').length;
-		var secondGenPokemons = $('.pokemon.ui-selected.generation-2').length;
-		var thirdGenPokemons = $('.pokemon.ui-selected.generation-3').length;
-		var fourthGenPokemons = $('.pokemon.ui-selected.generation-4').length;
-		var fifthGenPokemons = $('.pokemon.ui-selected.generation-5').length;
-		var sixthGenPokemons = $('.pokemon.ui-selected.generation-6').length;
-		var seventhGenPokemons = $('.pokemon.ui-selected.generation-7').length;
-		$('.progress-bar.generation-1').css('width', firstGenPokemons / 151 * 100 + '%');
-		$('.generation-1-progression').text(firstGenPokemons + '/'+ 151);
-		$('.progress-bar.generation-2').css('width', $('.pokemon.ui-selected.generation-2').length / 100 * 100 + '%');
-		$('.generation-2-progression').text(secondGenPokemons + '/'+ 100);
-		$('.progress-bar.generation-3').css('width', $('.pokemon.ui-selected.generation-3').length / 135 * 100 + '%');
-		$('.generation-3-progression').text(thirdGenPokemons + '/'+ 135);
-		$('.progress-bar.generation-4').css('width', $('.pokemon.ui-selected.generation-4').length / 107 * 100 + '%');
-		$('.generation-4-progression').text(fourthGenPokemons + '/'+ 107);
-		$('.progress-bar.generation-5').css('width', $('.pokemon.ui-selected.generation-5').length / 156 * 100 + '%');
-		$('.generation-5-progression').text(fifthGenPokemons + '/'+ 156);
-		$('.progress-bar.generation-6').css('width', $('.pokemon.ui-selected.generation-6').length / 72 * 100 + '%');
-		$('.generation-6-progression').text(sixthGenPokemons + '/'+ 72);
-		$('.progress-bar.generation-7').css('width', $('.pokemon.ui-selected.generation-7').length / 85 * 100 + '%');
-		$('.generation-7-progression').text(seventhGenPokemons + '/'+ 85);
+    var firstGenPokemons = $('.pokemon.generation-1').length;
+    var secondGenPokemons = $('.pokemon.generation-2').length;
+    var thirdGenPokemons = $('.pokemon.generation-3').length;
+    var fourthGenPokemons = $('.pokemon.generation-4').length;
+    var fifthGenPokemons = $('.pokemon.generation-5').length;
+    var sixthGenPokemons = $('.pokemon.generation-6').length;
+    var seventhGenPokemons = $('.pokemon.generation-7').length;
+    
+    var firstGenCaught = $('.pokemon.ui-selected.generation-1').length;
+    var secondGenCaught = $('.pokemon.ui-selected.generation-2').length;
+    var thirdGenCaught = $('.pokemon.ui-selected.generation-3').length;
+    var fourthGenCaught = $('.pokemon.ui-selected.generation-4').length;
+    var fifthGenCaught = $('.pokemon.ui-selected.generation-5').length;
+    var sixthGenCaught = $('.pokemon.ui-selected.generation-6').length;
+    var seventhGenCaught = $('.pokemon.ui-selected.generation-7').length;
+    
+		$('.progress-bar.generation-1').css('width', firstGenCaught / firstGenPokemons * 100 + '%');
+		$('.generation-1-progression').text(firstGenCaught + '/'+ firstGenPokemons);
+		$('.progress-bar.generation-2').css('width', secondGenCaught / secondGenPokemons * 100 + '%');
+		$('.generation-2-progression').text(secondGenCaught + '/'+ secondGenPokemons);
+		$('.progress-bar.generation-3').css('width', thirdGenCaught / thirdGenPokemons * 100 + '%');
+		$('.generation-3-progression').text(thirdGenCaught + '/'+ thirdGenPokemons);
+		$('.progress-bar.generation-4').css('width', fourthGenCaught / fourthGenPokemons * 100 + '%');
+		$('.generation-4-progression').text(fourthGenCaught + '/'+ fourthGenPokemons);
+		$('.progress-bar.generation-5').css('width', fifthGenCaught / fifthGenPokemons * 100 + '%');
+		$('.generation-5-progression').text(fifthGenCaught + '/'+ fifthGenPokemons);
+		$('.progress-bar.generation-6').css('width', sixthGenCaught / sixthGenPokemons * 100 + '%');
+		$('.generation-6-progression').text(sixthGenCaught + '/'+ sixthGenPokemons);
+    $('.progress-bar.generation-7').css('width', seventhGenCaught / seventhGenPokemons * 100 + '%');
+    $('.generation-7-progression').text(seventhGenCaught + '/'+ seventhGenPokemons);
 	}
 
 	var savePokedex = function() {
@@ -199,7 +208,7 @@ $(document).ready(function(){
 
 	// Filter by capture
 	$('.pokemon-filters label').on('click', function(){
-		var filterValue = $(this).data('filter');
+		var filterValue = (mode === "capture")? $(this).data('capture-filter') : $(this).data('shiny-filter');
 		$pokedex.isotope({
 			filter: filterValue
 		});

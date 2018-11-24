@@ -21,7 +21,40 @@
 			  <li role="presentation" {{#if pokedex_is_active}}class="active"{{/if}}>
 			  	<a href="/"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> Pokedex</a>
 			  </li>
-			  
+
+			  {{!-- Mode --}}
+			  <li>
+			  	<div class="btn-group navbar-btn modes col-md-12" data-toggle="buttons">
+			      <label class="btn btn-default active col-md-6">
+			        <input type="radio" data-mode="capture"><img src="/images/pokeball.png"/> Capture
+			      </label>
+			      <label class="btn btn-default col-md-6">
+			        <input type="radio" data-mode="shiny-tracking"><img src="/images/star.png"/> Shiny
+			      </label>
+			    </div>
+			  </li>
+			</ul>
+			<form class="navbar-form navbar-left">
+  			{{!-- Filter pokemon by name/ID --}}
+			  <div class="form-group">
+			    <input type="search" list="pokemon-names" class="search-pokemon form-control" placeholder="Search pokemon">
+				</div>
+			</form>
+			<ul class="nav navbar-nav">
+  			{{!-- Filter pokemon by caught/remaining --}}
+  			<li>
+					<div class="btn-group navbar-btn pokemon-filters" data-toggle="buttons">
+				    <label class="btn btn-default active" data-filter="*">
+				      <input type="radio"> All
+				    </label>
+				    <label class="btn btn-default" data-capture-filter=".ui-selected" data-shiny-filter=".shiny" >
+				      <input type="radio"> Caught
+				    </label>
+				    <label class="btn btn-default" data-capture-filter=":not(.ui-selected)" data-shiny-filter=":not(.shiny)">
+				      <input type="radio"> Remaining
+				    </label>
+				  </div>
+  			</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
@@ -29,7 +62,7 @@
 				{{#if user}}
 					{{!-- User connected --}}
 					<li>
-						<p class="navbar-text"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.local.email}}</p>
+						<a class="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{user.local.email}}</a>
 					</li>
 					<li>
 						<a href="/user/logout/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>

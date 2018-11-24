@@ -2,20 +2,6 @@
   <p class="caught-pokemons-highlight">You have <span class="my-pokemon-number">0 pokemons</span></p>
   
   <hr>
-  
-  <h4>Tracking mode</h4>
-  <div class="row">
-    <div class="btn-group modes col-md-12" data-toggle="buttons">
-      <label class="btn btn-default active col-md-6">
-        <input type="radio" data-mode="capture"><img src="/images/pokeball.png"/> Capture
-      </label>
-      <label class="btn btn-default col-md-6">
-        <input type="radio" data-mode="shiny-tracking"><img src="/images/star.png"/> Shiny
-      </label>
-    </div>
-  </div>
-
-  <hr>
 
   <!-- Capture Tracking -->
   {{> capture}}
@@ -23,25 +9,4 @@
   <!-- Shiny Tracking -->
   {{> shiny}}
  
-  <hr>
-
-  <!-- Filter pokemon by name/ID -->
-
-  <h4>Filters</h4>
-  <div class="form-group">
-      <input type="search" list="pokemon-names" class="search-pokemon form-control" placeholder="Filter pokemons">
-  </div>
-
-  <!-- Filters radio -->
-  <div class="btn-group pokemon-filters" data-toggle="buttons">
-    <label class="btn btn-default active" data-filter="*">
-      <input type="radio"> All
-    </label>
-    <label class="btn btn-default" data-filter=".ui-selected" >
-      <input type="radio"> Caught
-    </label>
-    <label class="btn btn-default" data-filter=":not(.ui-selected)">
-      <input type="radio"> Remaining
-    </label>
-  </div>
 </aside>
