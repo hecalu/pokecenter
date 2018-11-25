@@ -2,9 +2,6 @@ $(document).ready(function(){
 
 	// Simulate position fixed on filters column
 	var filtersOriginalTopPosition = $('.filters').offset().top;
-	$(window).scroll(function() {
-		//$('.filters').stop().animate({'top': $(this).scrollTop() + filtersOriginalTopPosition + "px"}, 250);
-	});
 
 	var mode = "capture";
 	
@@ -165,6 +162,10 @@ $(document).ready(function(){
     $('.generation-7-progression').text(seventhGenCaught + '/'+ seventhGenPokemons);
 	}
 
+  var getPokemonDataByID = function(pokemonID) {
+    return $('.pokemon[data-id='+pokemonID+']');
+  }
+
 	var savePokedex = function() {
 		var selectedPokemons = [];
 		$('.ui-selected').each(function(){
@@ -225,7 +226,8 @@ $(document).ready(function(){
 	// When selecting a pokemon
 	$(document).on('pokemon-selected', function(e, pokemonID){
 		if(mode == "shiny-tracking") {
-			$('.pokemon-tracked').html('<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/'+pokemonID+'.png"/>');
+      var pokemon = getPokemonDataByID(pokemonID);
+			$('.pokemon-tracked').html('<div class="name">'+pokemon.data('name')+'</div><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/'+pokemonID+'.png"/>');
 			console.log(pokemonID);
       selectedPokemonID = pokemonID;
       if(myShinies.indexOf(selectedPokemonID) === -1) {
