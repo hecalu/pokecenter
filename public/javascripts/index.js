@@ -67,7 +67,7 @@ $(document).ready(function(){
 
       // Save pokedex and update the pokemon caught counter.
       savePokedex();
-			updatePokemonCounter();
+      updatePokemonCounter();
     },
     // Styles tweaks
     selecting: function(event, ui) {
@@ -230,14 +230,15 @@ $(document).ready(function(){
       selectedPokemonID = pokemonID;
       if(myShinies.indexOf(selectedPokemonID) === -1) {
         // Shiny not captured
-        $('.btn.caught-shiny').removeClass('hide');
-        $('.btn.remove-shiny').addClass('hide');
+        $('.catch-ui').removeClass('hide');
+        $('.remove-ui').addClass('hide');
 
       } else {
         // Shiny already captured
-        $('.btn.remove-shiny').removeClass('hide');
-        $('.btn.caught-shiny').addClass('hide');
+        $('.catch-ui').addClass('hide');
+        $('.remove-ui').removeClass('hide');
       }
+      $("html, body").animate({ scrollTop: $('aside').offset().top });
 		}
 	});
 
@@ -265,6 +266,7 @@ $(document).ready(function(){
       $('#pokedex-pokemon-'+selectedPokemonID).addClass('shiny');
       console.log("My Shinies :", myShinies);
       savePokedex();
+      $(document).trigger('pokemon-selected', selectedPokemonID);
     }
   });
 
@@ -278,6 +280,7 @@ $(document).ready(function(){
       $('#pokedex-pokemon-'+selectedPokemonID).removeClass('shiny');
       console.log("My Shinies :", myShinies);
       savePokedex();
+      $(document).trigger('pokemon-selected', selectedPokemonID);
     }
   });
 
@@ -330,111 +333,7 @@ $(document).ready(function(){
 
 	// Update Shiny Params : Compute all values again
 	$(document).on('shiny-params-changed', function(){
-		var odds = computeOdds();
 		$('.shiny-tracking .encounters').val(encounters);
-		$('.shiny-tracking .probability').text(odds.toFraction());
-		$('.shiny-tracking .binomial').text(binomialDistributionPercentage(odds.valueOf()));
-		$('.shiny-tracking .remaining-encounters').text(remainingEncounters(odds.valueOf()));
 	});
-
-	function computeOdds() {
-    var odds = 8192;
-
-    // Random Encounters and Soft Resets
-    if (trackingGeneration === 6 || trackingGeneration === 7) {
-      odds = 4096;
-    }
-    if (shinyCharm === true && trackingGeneration === 5) {
-      odds = 2731;
-    }
-    if (shinyCharm === true && (trackingGeneration === 6 || trackingGeneration === 7)) {
-      odds = 1365;
-    }
-
-    // Masuda Method
-    if (encounterMethod === "masuda") {
-      if (trackingGeneration === 4) {
-        odds = 1638;
-      }
-      if (trackingGeneration === 5) {
-        if (shinyCharm === true) {
-          odds = 1024;
-        } else {
-          odds = 1365;
-        }
-      }
-      if (trackingGeneration === 6 || trackingGeneration === 7) {
-        if (shinyCharm === true) {
-          odds = 512;
-        } else {
-          odds = 683;
-        }
-      }
-    }
-
-    // Friend Safari
-    if (encounterMethod === "safari") {
-      odds = 512;
-    }
-
-    // Dex Nav -- unsure of the legitimacy of this
-    if (encounterMethod === "dex_nav") {
-      odds = 512;
-    }
-
-    // Radar chaining
-    // Chain fishing is speculated to be the same
-    if (encounterMethod === "radar" || encounterMethod === "fishing") {
-      // Values for the formula:
-      // Math.ceil(65535 / (8200 - nc * 200)) / 65536
-      // where nc = number in the chain, up to 40
-
-      var nc = encounters;
-      if (nc < 0) {
-        nc = 0;
-      }
-      if (nc > 40) {
-        nc = 40;
-      }
-      var f = new Fraction(Math.ceil(65535 / (8200 - nc * 200)) / 65536);
-      odds = Math.ceil(f.d/f.n);
-
-      if (trackingGeneration === 6) {
-        odds = odds/2;
-      }
-
-      if (shinyCharm === true) {
-        f = new Fraction(3, odds);
-        odds = Math.ceil(f.d/f.n);
-      }
-    }
-
-    // S.O.S Battles
-    if (encounterMethod === "sos") {
-      var chained_encounter = encounters % 256;
-      if (chained_encounter  >= 70) {
-        if (shinyCharm === true) {
-          odds = 683;
-        } else {
-          odds = 1024;
-        }
-      }
-    }
-    return new Fraction(1, Math.ceil(odds));
-  }
-
-
-  function binomialDistributionPercentage(oddsValue) {
-    var p = oddsValue;
-    var n = encounters;
-    var p_to_n = Math.pow((1.0 - p), n);
-    return (p_to_n * (Math.pow((-(1.0/(p-1.0))), n)) - p_to_n) * 100.0;
-  }
-
-  function remainingEncounters(oddsValue) {
-    var p = oddsValue;
-    var n = Math.ceil(Math.log(0.1) / Math.log(1-p));
-    return n - encounters;
-  }
 
 });
