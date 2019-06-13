@@ -49,7 +49,7 @@
           var userIsAuthenticated = true;
           var myDbPokemons        = {{{user.pokemons}}};
           {{#if user.shinies}}
-            var myDbShinies         = {{user.shinies}};
+            var myDbShinies         = {{{user.shinies}}};
           {{else}}
             var myDbShinies         = [];
           {{/if}}
