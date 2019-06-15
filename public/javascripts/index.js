@@ -124,10 +124,15 @@ $(document).ready(function(){
 
 	var updatePokemonCounter = function() {
 		if(myPokemons.length == 1) {
-			$('.my-pokemon-number').text('1 pokemon');	
-		} else {
-			$('.my-pokemon-number').text(myPokemons.length + ' pokemons');	
-		}
+      $('.my-pokemon-number').text('1 pokemon');  
+    } else {
+      $('.my-pokemon-number').text(myPokemons.length + ' pokemons');  
+    }
+    if(myShinies.length == 1) {
+      $('.my-shiny-number').text('1 shiny');  
+    } else {
+      $('.my-shiny-number').text(myShinies.length + ' shinies');  
+    }
 
 		// Update generation progression counters
     var firstGenPokemons = $('.pokemon.generation-1').length;
@@ -267,6 +272,7 @@ $(document).ready(function(){
       if (myShinies.indexOf(selectedPokemonID) === -1) myShinies.push(selectedPokemonID); // Prevents duplicates
       $('#pokedex-pokemon-'+selectedPokemonID).addClass('shiny');
       console.log("My Shinies :", myShinies);
+      updatePokemonCounter();
       savePokedex();
       $(document).trigger('pokemon-selected', selectedPokemonID);
     }
@@ -281,6 +287,7 @@ $(document).ready(function(){
       }
       $('#pokedex-pokemon-'+selectedPokemonID).removeClass('shiny');
       console.log("My Shinies :", myShinies);
+      updatePokemonCounter();
       savePokedex();
       $(document).trigger('pokemon-selected', selectedPokemonID);
     }
