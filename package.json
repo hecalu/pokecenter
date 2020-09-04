@@ -16,7 +16,7 @@
     "express-session": "^1.7.6",
     "hbs": "~2.8.0",
     "less-middleware": "1.0.x",
-    "mongodb": "~2.0.33",
+    "mongodb": "~3.6.1",
     "mongoose": "latest",
     "morgan": "~1.5.1",
     "passport": "^0.3.0",
